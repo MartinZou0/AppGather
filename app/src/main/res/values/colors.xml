@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#349AFF</color>
+    <color name="colorPrimaryDark">#349AFF</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="text_clo">#333</color>
+    <color name="border_clo">#ccc</color>
+    <color name="menucolor">#F2F2F2</color>
+    <color name="textcolor">#878787</color>
+    <color name="usenamecolor">#349AFF</color>
+    <color name="color_2">#2a4253</color>
+    <color name="colorLoginDivide">#CCFFCC</color>
+    <color name="white">#FFFAFA</color>
+    <color name="lucency">#00000000</color>
+    <color name="blue">#99CCFF</color>
+</resources>
