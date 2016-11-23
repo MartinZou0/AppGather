@@ -19,7 +19,7 @@
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.SecuritycodeActivity">
         </activity>
-        <activity android:name=".activity.MainViewActivity">
+        <activity android:name=".activity.MainInterfaceActivity">
         </activity>
     </application>
 </manifest>
