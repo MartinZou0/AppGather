@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.appgather.R;
+import com.appgather.sdk.API;
 import com.appgather.view.TextWatcherForJudge;
 
 
@@ -163,6 +164,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 et_loginpassword.setText("");
             default:break;
         }
+        API.Login("zspmhzx", "zspmhzx", new API.Login_Ret() {
+            @Override
+            public void ret(int Ret, String Msg) {
+
+            }
+        });
 
     }
 }
