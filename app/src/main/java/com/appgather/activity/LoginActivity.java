@@ -171,5 +171,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        API.Login(new API.Login_Send("zspmhzx","zspmhzx"), new API.Login_Ret() {
+            @Override
+            public void ret(int Ret, String Msg) {
+
+            }
+        });
+
     }
 }
