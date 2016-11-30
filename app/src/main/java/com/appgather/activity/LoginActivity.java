@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.appgather.R;
 import com.appgather.sdk.API;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean isfocuseditname=false;
     private boolean isfocuseditpassword=false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +156,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);break;
             case R.id.btn_login:
+                API.Login(et_loginname.getText().toString(),et_loginpassword.getText().toString(), new API.Login_Ret() {
+                    @Override
+                    public void ret(int Ret, String Msg) {
+                            if(Ret==200)
+                            {
+                                Log.d("xyz","网络请求错误");
+                            }
+                            else
+                            {
+                                Log.d("xyz","请求成功，返回的数据是："+Msg);
+                            }
+                    }
+                });
                 Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
                 startActivity(intent2);
                 break;
@@ -164,19 +180,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 et_loginpassword.setText("");
             default:break;
         }
-        API.Login("zspmhzx", "zspmhzx", new API.Login_Ret() {
-            @Override
-            public void ret(int Ret, String Msg) {
-
-            }
-        });
-
-        API.Login(new API.Login_Send("zspmhzx","zspmhzx"), new API.Login_Ret() {
-            @Override
-            public void ret(int Ret, String Msg) {
-
-            }
-        });
-
     }
 }

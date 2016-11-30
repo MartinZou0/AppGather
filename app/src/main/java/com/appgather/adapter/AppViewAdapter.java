@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.BaseAdapter;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 import com.appgather.R;
+import com.appgather.entity.AppMsg;
 
 /**
  * Created by qinghua on 2016/11/23.
@@ -19,9 +21,9 @@ import com.appgather.R;
  */
 
 public class AppViewAdapter extends BaseAdapter{
-    private List<String> urllist;
+    private List<AppMsg> urllist;
     private LayoutInflater inflater;
-    public AppViewAdapter(Context context,List<String> list)
+    public AppViewAdapter(Context context,List<AppMsg> list)
     {
         urllist=list;
         inflater=LayoutInflater.from(context);
@@ -49,16 +51,14 @@ public class AppViewAdapter extends BaseAdapter{
             viewHold=new ViewHold();
             view=inflater.inflate(R.layout.appviewitem,null);
             viewHold.m_webView= (WebView) view.findViewById(R.id.mapView_app);
-            viewHold.imageView= (ImageView) view.findViewById(R.id.showAppname);
             view.setTag(viewHold);
         }
         else
         {
             viewHold= (ViewHold) view.getTag();
         }
-        viewHold.m_webView.getSettings().setJavaScriptEnabled(true);
-        viewHold.m_webView.loadUrl(urllist.get(i));
-        final String str=urllist.get(i);
+
+        viewHold.m_webView.loadUrl(urllist.get(i).getAppUrl());
         viewHold.m_webView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -73,6 +73,5 @@ public class AppViewAdapter extends BaseAdapter{
 
     class ViewHold{
         WebView m_webView;
-        ImageView imageView;
     };
 }

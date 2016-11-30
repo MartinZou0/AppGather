@@ -19,7 +19,13 @@
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.SecuritycodeActivity">
         </activity>
-        <activity android:name=".activity.MainInterfaceActivity">
+        <activity android:name=".activity.MainInterfaceActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
+        <activity android:name=".activity.AppDetailViewActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
         </activity>
     </application>
 </manifest>

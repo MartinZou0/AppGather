@@ -6,21 +6,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         android:text="百度"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="18sp"
         />
-    <FrameLayout
+
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
+        android:id="@+id/detailmapView_app"
         >
-        <WebView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/mapView_app"
-            >
-        </WebView>
-    </FrameLayout>
+    </WebView>
 </LinearLayout>
