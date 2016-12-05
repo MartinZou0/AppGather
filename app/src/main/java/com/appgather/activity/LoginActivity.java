@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    @Override
+    @Override()
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_forregister:
@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 Log.d("xyz","请求成功，返回的数据是："+Msg);
                             }
                     }
-                });
+                },this);
                 Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
                 startActivity(intent2);
                 break;

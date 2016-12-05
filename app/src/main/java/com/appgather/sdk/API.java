@@ -1,9 +1,15 @@
 package com.appgather.sdk;
 
+import android.app.Activity;
 import android.util.Log;
 import com.alibaba.fastjson.JSON;
+import com.appgather.activity.MainInterfaceActivity;
 import com.appgather.entity.API_Login;
 import java.io.IOException;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.Method;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -20,7 +26,6 @@ public class API {
     public static class SendObject {
         String act;
         Object content;
-
         public String getAct() {
             return act;
         }
@@ -33,7 +38,7 @@ public class API {
         void ret(int Ret, String Msg);
     }
 
-    public static void Login(API_Login Send, final Login_Ret ret){
+    public static void Login(API_Login Send, final Login_Ret ret, final Activity activity){
         SendObject SO = new SendObject();
         SO.act="Login";
         SO.content = Send;
@@ -57,15 +62,31 @@ public class API {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String str = response.body().string();
-                ret.ret(0,str);
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (activity!=null) {
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String str = null;
+                            try {
+                                str = response.body().string();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            ret.ret(0,str);
+                        }
+                    });
+                }else{
+                    String str = response.body().string();
+                    ret.ret(0,str);
+                }
+
             }
 
         });
     }
-    public static void Login(String Username, String Password, Login_Ret ret) {
-        Login(new API_Login(Username,Password),ret);
+    public static void Login(String Username, String Password, Login_Ret ret, Activity activity) {
+        Login(new API_Login(Username,Password),ret,activity);
     }
 
 }
