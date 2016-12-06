@@ -16,8 +16,8 @@ public class SecuritycodeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_securitycode);
         tv_usertel=(TextView)findViewById(R.id.tv_usertel);
         Intent intent=getIntent();
-        String usertel=intent.getStringExtra("extra_usertel");
-        tv_usertel.setText("+86  "+usertel);
+        String extra_usertel=intent.getStringExtra("extra_usertel");
+        tv_usertel.setText("+86  "+extra_usertel);
 
     }
 }

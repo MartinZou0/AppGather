@@ -16,4 +16,7 @@
     <string name="tv_code">验证码</string>
     <string name="et_hint_code">正确输入验证码将自动登录</string>
     <string name="tv_againgetcode">重新获取验证码</string>
+    <string name="tv_sendpassword">是否发送密码到您的手机?</string>
+    <string name="tv_find_phonenumber">请输入手机号：</string>
+    <string name="btn_affirmsendpassword">确认发送</string>
 </resources>

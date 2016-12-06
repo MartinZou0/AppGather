@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 Intent intent=new Intent(RegisterActivity.this,SecuritycodeActivity.class);
-                intent.putExtra("extra_usertel",tel);//向填写验证码界面发送手机号
+                intent.putExtra("extra_usertel",tel);//向填写验证码界面发送手机号-键为extra_usertel,值为tel
                 startActivity(intent);
             }
         });

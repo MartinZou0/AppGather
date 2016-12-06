@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/tv_blank"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="150dp" />
 <RelativeLayout
 
     android:layout_width="match_parent"
@@ -22,8 +22,8 @@
     <ImageView
         android:id="@+id/iv_headportrait"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@mipmap/photo" />
     <TextView
         android:id="@+id/tv_username"
@@ -132,6 +132,7 @@
         android:text="@string/btn_registerapp"
         android:background="@color/lucency"/>
     <Button
+        android:id="@+id/btn_forgetpassword"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="30dp"
         android:layout_below="@id/btn_login"

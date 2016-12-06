@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.appgather">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,15 +18,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.SecuritycodeActivity">
-        </activity>
-        <activity android:name=".activity.MainInterfaceActivity"
-            android:windowSoftInputMode="adjustPan"
-            >
-        </activity>
-        <activity android:name=".activity.AppDetailViewActivity"
-            android:windowSoftInputMode="adjustPan"
-            >
-        </activity>
+        <activity android:name=".activity.SecuritycodeActivity"></activity>
+        <activity
+            android:name=".activity.MainInterfaceActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".activity.AppDetailViewActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.FindPassword"></activity>
     </application>
+
 </manifest>

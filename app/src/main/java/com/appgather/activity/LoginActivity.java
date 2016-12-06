@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_register;
     private Button btn_canclename;
     private Button btn_canclepassword;
+    private Button btn_forgetpassword;
 
     private boolean isfocuseditname=false;
     private boolean isfocuseditpassword=false;
@@ -51,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initView();
     }
 
+
     private void initView() {
         et_loginpassword = (EditText) findViewById(R.id.et_loginpassword);
         et_loginname = (EditText) findViewById(R.id.et_loginname);
@@ -59,10 +61,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_register=(Button)findViewById(R.id.btn_forregister);
         btn_canclename=(Button)findViewById(R.id.btn_canclename);
         btn_canclepassword=(Button)findViewById(R.id.btn_canclepassword);
+        btn_forgetpassword=(Button)findViewById(R.id.btn_forgetpassword);
         btnListen();//按钮事件监听
         editviewFocus();//编辑框焦点事件监听
         inputModeListen();//软键盘弹出监听
         editViewListenInput();//编辑框输入监听
+        setEt_usertel();//设置从找回密码页面传来的手机号
     }
 
     //按钮监听器
@@ -72,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_login.setOnClickListener(this);
         btn_canclename.setOnClickListener(this);
         btn_canclepassword.setOnClickListener(this);
+        btn_forgetpassword.setOnClickListener(this);
     }
     //
     //输入框焦点监听
@@ -178,7 +183,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn_canclepassword:
                 et_loginpassword.setText("");
+                break;
+            case R.id.btn_forgetpassword:
+                Intent intent3=new Intent(LoginActivity.this,FindPassword.class);
+                startActivity(intent3);
             default:break;
         }
+    }
+    private void setEt_usertel(){
+        Intent intent=getIntent();//获得从找回密码页面传来的手机号
+        String extra_phonenumber=intent.getStringExtra("extra_phonenumber");
+        et_loginname.setText(extra_phonenumber);
     }
 }
