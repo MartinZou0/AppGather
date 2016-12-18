@@ -1,24 +1,19 @@
 package com.appgather.activity;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.graphics.Rect;
-import android.os.IBinder;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.appgather.R;
 import com.appgather.sdk.API;
 import com.appgather.util.MD5;
@@ -124,8 +119,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
-
-    //
     //监听文本框用户名和密码是否有输入
     private void editViewListenInput() {
         textWatcherForName = new TextWatcherForJudge() {
@@ -161,37 +154,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);break;
             case R.id.btn_login:
-                API.Login(et_loginname.getText().toString(), MD5.digest(et_loginpassword.getText().toString().getBytes()), new API.Login_Ret() {
-                    @Override
-                    public void ret(int Ret, final String Msg) {
-                            if(Ret==0)
-                            {
-                                Log.d("zzz","登录失败");
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(LoginActivity.this,Msg,Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                            else if(Ret==200)
-                            {
-                                Log.d("zzz","登录成功");
-                                Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
-                                startActivity(intent2);
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-
-                                    }
-                                });
-
-                            }
-                    }
-                },this);
-
+                Login();
                 break;
             case R.id.btn_canclename:
                 et_loginname.setText("");
@@ -205,6 +168,40 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent3);
             default:break;
         }
+    }
+
+    /**
+     * 登陆验证
+     */
+    private void Login() {
+        API.Login(et_loginname.getText().toString(), MD5.digest(et_loginpassword.getText().toString().getBytes()), new API.Login_Ret() {
+            @Override
+            public void ret(int Ret, final String Msg) {
+                if(Ret==0)
+                {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this,Msg,Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else if(Ret==200)
+                {
+                    Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
+                    startActivity(intent2);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            Toast.makeText(LoginActivity.this,Msg,Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                }
+            }
+        },this);
     }
     private void setEt_usertel(){
         Intent intent=getIntent();//获得从找回密码页面传来的手机号

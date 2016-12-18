@@ -7,11 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.appgather.entity.API_Login;
 import com.appgather.entity.API_Register;
 import com.appgather.entity.ResultData;
-
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -54,7 +50,6 @@ public class API {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("zzz",e.getMessage());
                 String str="网络异常";
                 ret.ret(0,str);
             }
@@ -62,16 +57,15 @@ public class API {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String a=response.body().string();
-                Log.d("zzz","response="+a);
                 ResultData resultData=new ResultData();
                 resultData= JSON.parseObject(a,ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {
-                    ret.ret(200,resultData.getInfo());
+                    ret.ret(200,"登陆成功");
                 }
-                else
+                else if(resultData.getStatus().equals("0"))
                 {
-                   ret.ret(0,resultData.getInfo());
+                    ret.ret(0,"密码错误");
                 }
             }
 
@@ -95,7 +89,6 @@ public class API {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("zzz",e.getMessage());
                 String str="网络异常";
                 ret.ret(0,str);
             }
@@ -107,11 +100,15 @@ public class API {
                 ResultData resultData= JSONObject.parseObject(str,ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {
-                    ret.ret(200,resultData.getInfo());
+                    ret.ret(200,"注册成功");
                 }
-                else
+                else if(resultData.getStatus().equals("20"))
                 {
-                    ret.ret(0,resultData.getInfo());
+                    ret.ret(0,"用户名已被注册");
+                }
+                else if(resultData.getStatus().equals("30"))
+                {
+                    ret.ret(0,"密码格式错误");
                 }
             }
 
@@ -119,12 +116,5 @@ public class API {
     }
     public static void Register(String Username, String Password,String telPhone, Login_Ret ret, Activity activity) {
         Register(new API_Register(Username,telPhone,Password),ret,activity);
-    }
-    public static  String unescapeUnicode(String str){
-        StringBuffer b=new StringBuffer();
-        Matcher m = Pattern.compile("\\\\u([0-9a-fA-F]{4})").matcher(str);
-        while(m.find())
-            b.append((char)Integer.parseInt(m.group(1),16));
-        return b.toString();
     }
 }

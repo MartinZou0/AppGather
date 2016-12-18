@@ -8,29 +8,16 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.alibaba.fastjson.JSON;
 import com.appgather.R;
 import com.appgather.entity.API_Register;
 import com.appgather.sdk.API;
 import com.appgather.util.DlgLoading;
 import com.appgather.util.MD5;
 import com.appgather.view.TextWatcherForJudge;
-
-import java.io.IOException;
-
 import cn.smssdk.EventHandler;
 import cn.smssdk.OnSendMessageHandler;
 import cn.smssdk.SMSSDK;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
 import static com.appgather.R.id.et_registername;
 
 public class SecuritycodeActivity extends AppCompatActivity {
@@ -47,10 +34,8 @@ public class SecuritycodeActivity extends AppCompatActivity {
      * 短信验证监听器
      */
     EventHandler eh=new EventHandler(){
-
         @Override
         public void afterEvent(int event, int result, Object data) {
-
             if (result == SMSSDK.RESULT_COMPLETE) {
                 //回调完成
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
@@ -74,7 +59,6 @@ public class SecuritycodeActivity extends AppCompatActivity {
                 });
             }
         }
-
 
     };
 
