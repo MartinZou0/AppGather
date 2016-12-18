@@ -19,7 +19,6 @@
             android:layout_height="30dp"
             android:paddingLeft="50dp"
             android:textSize="15dp"
-            android:hint="@string/et_hint_registername"
             android:textCursorDrawable="@null"
             android:background="@null"/>
     </LinearLayout>
@@ -45,7 +44,6 @@
             android:layout_height="30dp"
             android:paddingLeft="50dp"
             android:textSize="15sp"
-            android:hint="@string/et_hint_registertel"
             android:maxLength="11"
             android:phoneNumber="true"
             android:textCursorDrawable="@null"
@@ -72,7 +70,6 @@
             android:layout_height="30dp"
             android:paddingLeft="50dp"
             android:textSize="15dp"
-            android:hint="@string/et_hint_registerpassword"
             android:textCursorDrawable="@null"
             android:password="true"
             android:maxLength="16"

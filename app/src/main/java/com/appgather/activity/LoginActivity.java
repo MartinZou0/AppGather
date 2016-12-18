@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.appgather.R;
 import com.appgather.sdk.API;
+import com.appgather.util.MD5;
 import com.appgather.view.TextWatcherForJudge;
 
 
@@ -36,7 +37,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button btn_canclename;
     private Button btn_canclepassword;
     private Button btn_forgetpassword;
-
     private boolean isfocuseditname=false;
     private boolean isfocuseditpassword=false;
 
@@ -161,21 +161,37 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);break;
             case R.id.btn_login:
-                API.Login(et_loginname.getText().toString(),et_loginpassword.getText().toString(), new API.Login_Ret() {
+                API.Login(et_loginname.getText().toString(), MD5.digest(et_loginpassword.getText().toString().getBytes()), new API.Login_Ret() {
                     @Override
-                    public void ret(int Ret, String Msg) {
-                            if(Ret==200)
+                    public void ret(int Ret, final String Msg) {
+                            if(Ret==0)
                             {
-                                Log.d("xyz","网络请求错误");
+                                Log.d("zzz","登录失败");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(LoginActivity.this,Msg,Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
-                            else
+                            else if(Ret==200)
                             {
-                                Log.d("xyz","请求成功，返回的数据是："+Msg);
+                                Log.d("zzz","登录成功");
+                                Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
+                                startActivity(intent2);
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+
+                                    }
+                                });
+
                             }
                     }
                 },this);
-                Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
-                startActivity(intent2);
+
                 break;
             case R.id.btn_canclename:
                 et_loginname.setText("");

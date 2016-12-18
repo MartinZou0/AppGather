@@ -13,13 +13,30 @@
         android:textSize="15sp"
         android:textColor="@color/blue"
         android:gravity="center"/>
-    <TextView
-        android:layout_margin="20dp"
-        android:id="@+id/tv_usertel"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:text="+86"
+            android:layout_margin="20dp"
+            />
+        <TextView
+            android:layout_margin="20dp"
+            android:id="@+id/tv_usertel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -31,6 +48,7 @@
             android:textSize="15sp"
             android:text="@string/tv_code"/>
         <EditText
+            android:id="@+id/et_SecurityCode"
             android:layout_marginLeft="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
