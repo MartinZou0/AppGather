@@ -94,16 +94,39 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
-
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/xgnc"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                />
             <TextView
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="修改昵称"
                 android:layout_gravity="center"
+
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <ImageView
+
+                    android:background="@drawable/jinru"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,8 +139,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/xgmm"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                />
             <TextView
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="修改密码"
@@ -125,6 +156,19 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:background="@drawable/jinru"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,8 +181,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/xgzl"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                />
             <TextView
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -146,6 +198,19 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:background="@drawable/jinru"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -158,8 +223,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/sjtb"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                />
             <TextView
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -167,6 +240,19 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:background="@drawable/jinru"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -179,8 +265,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             >
+            <ImageView
+                android:layout_marginTop="10dp"
+                android:background="@drawable/scsj"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                />
             <TextView
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -188,6 +282,19 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                >
+                <ImageView
+                    android:background="@drawable/jinru"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    />
+            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -213,7 +320,6 @@
                 android:layout_gravity="center"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-
                 android:text="退出登录"
                 android:background="@drawable/anniubiankuang"
                 android:textSize="20sp"
