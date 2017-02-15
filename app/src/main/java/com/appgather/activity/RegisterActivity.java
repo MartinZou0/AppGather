@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.appgather.R;
+import com.appgather.entity.API_Register;
 import com.appgather.view.TextWatcherForJudge;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -20,11 +20,12 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText et_registername;
     private EditText et_registertel;
     private EditText et_registerpassword;
-
     private TextWatcher textWatcherForName;
     private TextWatcher textWatcherForPassword;
     private TextWatcher getTextWatcherForTel;
     private Button btn_register;
+
+    private API_Register register;//存放注册信息
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,24 +37,33 @@ public class RegisterActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
         setContentView(R.layout.register);
+        initView();
+        editViewListenInput();//监听编辑框是否都输入完全
+    }
 
+    /**
+     * 初始化
+     */
+
+    private void initView() {
+        register=new API_Register();
         btn_register=(Button)findViewById(R.id.btn_register);
+        et_registername=(EditText)findViewById(R.id.et_registername);
+        et_registertel=(EditText)findViewById(R.id.et_registertel);
+        et_registerpassword=(EditText)findViewById(R.id.et_registerpassword);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialogForSend();
             }
         });
-        et_registername=(EditText)findViewById(R.id.et_registername);
-        et_registertel=(EditText)findViewById(R.id.et_registertel);
-        et_registerpassword=(EditText)findViewById(R.id.et_registerpassword);
-
-        editViewListenInput();//监听编辑框是否都输入完全
     }
+
     /*
     * 弹出Dialog询问是否发送验证码
     * */
     private void alertDialogForSend(){
+        setRegister();
         final String tel=""+et_registertel.getText();
         AlertDialog.Builder senddialog =new AlertDialog.Builder(RegisterActivity.this);
         senddialog.setTitle("确认手机号码");
@@ -64,7 +74,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 Intent intent=new Intent(RegisterActivity.this,SecuritycodeActivity.class);
-                intent.putExtra("extra_usertel",tel);//向填写验证码界面发送手机号-键为extra_usertel,值为tel
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("API_Register",register);
+                intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });
@@ -76,6 +89,15 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         senddialog.show();
+    }
+
+    /**
+     * 获取用户输入的信息
+     */
+    private void setRegister() {
+        register.setNickName(et_registername.getText().toString());
+        register.setPassword(et_registerpassword.getText().toString());
+        register.setUsername(et_registertel.getText().toString());
     }
 
     //

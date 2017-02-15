@@ -1,5 +1,8 @@
 package com.appgather;
 
+import com.alibaba.fastjson.JSON;
+import com.appgather.entity.ResultData;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,6 +15,8 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        ResultData resultData;
+        resultData=JSON.parseObject("{\"status\":\"0\",\"info\":\"\\u7528\\u6237\\u540d\\u5fc5\\u987b\\u4e3a\\u624b\\u673a\\u53f7\"}",ResultData.class);
+        System.out.println(resultData.getInfo());
     }
 }

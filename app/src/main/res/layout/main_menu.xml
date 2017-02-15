@@ -14,7 +14,6 @@
             android:layout_height="40dp"
             android:background="@drawable/hide"
             android:layout_marginLeft="10dp"
-            android:visibility="gone"
             />
     </LinearLayout>
     <LinearLayout
@@ -25,11 +24,26 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         >
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:background="@drawable/head"
-            />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/yuanxingbiankuang"
+                >
+
+            </LinearLayout>
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@mipmap/taoxiang"
+                />
+        </FrameLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test@test.com"
+            android:text="13075861664"
             android:textColor="@color/textcolor"
             android:textSize="16sp"
             android:layout_gravity="center"
@@ -73,6 +87,7 @@
             android:layout_gravity="center_horizontal"
             android:text="个人中心"
             android:textColor="@color/textcolor"
+            android:id="@+id/tv_personalcenter"
             android:textSize="22sp"
             />
         <TextView
@@ -101,7 +116,7 @@
             android:background="@color/border_clo"
             />
         <TextView
-
+            android:id="@+id/tv_appManage"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
