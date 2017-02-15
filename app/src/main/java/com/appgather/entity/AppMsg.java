@@ -7,11 +7,12 @@ import java.io.Serializable;
  */
 
 public class AppMsg implements Serializable {
-    public AppMsg() {
-    }
 
     private String appnamae;
     private  String appUrl;
+    private  int type;
+    public AppMsg() {
+    }
 
     public AppMsg(String appnamae, String appUrl) {
         this.appnamae = appnamae;
@@ -32,5 +33,13 @@ public class AppMsg implements Serializable {
 
     public void setAppUrl(String appUrl) {
         this.appUrl = appUrl;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

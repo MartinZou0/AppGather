@@ -19,4 +19,8 @@
     <string name="tv_sendpassword">是否发送密码到您的手机?</string>
     <string name="tv_find_phonenumber">请输入手机号：</string>
     <string name="btn_affirmsendpassword">确认发送</string>
+    <string name="customItem">自定义分类</string>
+    <string name="custom_wc">完成</string>
+    <string name="custom_text1">已添加的分类</string>
+    <string name="custom_text2">未添加的分类</string>
 </resources>
