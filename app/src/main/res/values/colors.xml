@@ -13,4 +13,5 @@
     <color name="white">#FFFAFA</color>
     <color name="lucency">#00000000</color>
     <color name="blue">#99CCFF</color>
+    <color name="background">#5fccffff</color>
 </resources>

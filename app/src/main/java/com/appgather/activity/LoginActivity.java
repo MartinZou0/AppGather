@@ -3,6 +3,7 @@ package com.appgather.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -28,25 +29,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private EditText et_loginname;
     private EditText et_loginpassword;
-    private TextView tv_blank;
+
     private TextWatcher textWatcherForName;
     private TextWatcher textWatcherForPassword;
     private Button btn_login;
     private Button btn_register;
-    private Button btn_canclename;
-    private Button btn_canclepassword;
+
     private Button btn_forgetpassword;
 
-    private boolean isfocuseditname=false;
-    private boolean isfocuseditpassword=false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         setContentView(R.layout.login);
         getSupportActionBar().hide();
         initView();
@@ -56,15 +58,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void initView() {
         et_loginpassword = (EditText) findViewById(R.id.et_loginpassword);
         et_loginname = (EditText) findViewById(R.id.et_loginname);
-        tv_blank = (TextView) findViewById(R.id.tv_blank);
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register=(Button)findViewById(R.id.btn_forregister);
-        btn_canclename=(Button)findViewById(R.id.btn_canclename);
-        btn_canclepassword=(Button)findViewById(R.id.btn_canclepassword);
         btn_forgetpassword=(Button)findViewById(R.id.btn_forgetpassword);
         btnListen();//按钮事件监听
         editviewFocus();//编辑框焦点事件监听
-        inputModeListen();//软键盘弹出监听
+        //inputModeListen();//软键盘弹出监听
         editViewListenInput();//编辑框输入监听
         setEt_usertel();//设置从找回密码页面传来的手机号
     }
@@ -74,8 +73,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void btnListen(){
         btn_register.setOnClickListener(this);
         btn_login.setOnClickListener(this);
-        btn_canclename.setOnClickListener(this);
-        btn_canclepassword.setOnClickListener(this);
         btn_forgetpassword.setOnClickListener(this);
     }
     //
@@ -85,25 +82,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_loginname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean isFocus) {
-                isfocuseditname = isFocus;
-                btn_canclename.setVisibility(View.VISIBLE);
-                btn_canclepassword.setVisibility(View.INVISIBLE);
-
             }
         });
         et_loginpassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean isFocus) {
-                isfocuseditpassword = isFocus;
-                btn_canclepassword.setVisibility(View.VISIBLE);
-                btn_canclename.setVisibility(View.INVISIBLE);
             }
         });
     }
 
     //
     //监听软键盘弹出，屏幕上移,不遮挡登陆按钮
-    private void inputModeListen() {
+   /* private void inputModeListen() {
         et_loginpassword.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             //当键盘弹出隐藏的时候会 调用此方法。
             @Override
@@ -123,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-    }
+    }*/
 
     //
     //监听文本框用户名和密码是否有输入
@@ -177,13 +167,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.btn_canclename:
-                et_loginname.setText("");
-                et_loginpassword.setText("");
-                break;
-            case R.id.btn_canclepassword:
-                et_loginpassword.setText("");
-                break;
+
             case R.id.btn_forgetpassword:
                 Intent intent3=new Intent(LoginActivity.this,FindPassword.class);
                 startActivity(intent3);

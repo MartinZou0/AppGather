@@ -2,96 +2,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp">
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/blue"
-            android:text="@string/tv_username"/>
-        <EditText
-            android:id="@+id/et_registername"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:paddingLeft="50dp"
-            android:textSize="15dp"
-            android:hint="@string/et_hint_registername"
-            android:textCursorDrawable="@null"
-            android:background="@null"/>
-    </LinearLayout>
-    <TextView
+    android:padding="30dp"
+    android:background="#5fccffff">
+
+
+    <EditText
+
+        android:layout_marginTop="100dp"
+        android:paddingLeft="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/et_registername"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/et_hint_registername"
+        android:textCursorDrawable="@null"
+        android:singleLine="true"
+        android:textSize="10sp"
+        android:background="@drawable/shape"/>
+
+    <EditText
 
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLoginDivide"/>
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/blue"
-            android:text="@string/tv_registertel"/>
-        <EditText
-            android:id="@+id/et_registertel"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:paddingLeft="50dp"
-            android:textSize="15sp"
-            android:hint="@string/et_hint_registertel"
-            android:maxLength="11"
-            android:phoneNumber="true"
-            android:textCursorDrawable="@null"
-            android:background="@null"/>
-    </LinearLayout>
-    <TextView
+        android:paddingLeft="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/et_registertel"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/et_hint_registertel"
+        android:textCursorDrawable="@null"
+        android:singleLine="true"
+        android:maxLength="11"
+        android:phoneNumber="true"
+        android:textSize="10sp"
+        android:background="@drawable/shape"/>
+
+    <EditText
+
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLoginDivide"/>
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textColor="@color/blue"
-            android:text="@string/tv_registerpassword"/>
-        <EditText
-            android:id="@+id/et_registerpassword"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:paddingLeft="50dp"
-            android:textSize="15dp"
-            android:hint="@string/et_hint_registerpassword"
-            android:textCursorDrawable="@null"
-            android:password="true"
-            android:maxLength="16"
-            android:background="@null"/>
-    </LinearLayout>
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorLoginDivide"/>
+        android:paddingLeft="20dp"
+        android:layout_gravity="center"
+        android:id="@+id/et_registerpassword"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="@string/et_hint_registerpassword"
+        android:textCursorDrawable="@null"
+        android:singleLine="true"
+        android:textSize="10sp"
+        android:background="@drawable/shape"/>
+
+
     <Button
         android:id="@+id/btn_register"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:text="@string/btn_register"
-        android:textSize="20sp"
-        android:background="@drawable/myshape"
-        android:enabled="false"/>
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/myshape" />
 
 
 </LinearLayout>
