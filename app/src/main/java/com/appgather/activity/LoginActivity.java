@@ -164,6 +164,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * 登陆验证
      */
     private void Login() {
+        Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
+        startActivity(intent2);
         API.Login(et_loginname.getText().toString(), MD5.digest(et_loginpassword.getText().toString().getBytes()), new API.Login_Ret() {
             @Override
             public void ret(int Ret, final String Msg) {
