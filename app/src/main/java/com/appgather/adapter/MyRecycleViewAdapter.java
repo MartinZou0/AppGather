@@ -1,20 +1,24 @@
 package com.appgather.adapter;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import com.appgather.R;
-import com.appgather.entity.AppMsg;
-import com.appgather.entity.CustomItemMsg;
+import com.appgather.application.MyApplication;
+import com.appgather.entity.Classify;
 import com.appgather.viewHolder.NoSelectTitleViewHolder;
 import com.appgather.viewHolder.NoSelectViewHolder;
 import com.appgather.viewHolder.SelectTitleViewHolder;
 import com.appgather.viewHolder.SelectViewHolder;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +30,9 @@ import java.util.Map;
 
 public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private List<CustomItemMsg> SelectList=new ArrayList<CustomItemMsg>();
+    private List<Classify> SelectList=new ArrayList<Classify>();
 
-    private List<CustomItemMsg> NoSelectList=new ArrayList<CustomItemMsg>();
+    private List<Classify> NoSelectList=new ArrayList<Classify>();
 
     private LayoutInflater inflater;
 
@@ -38,13 +42,14 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
 
     private List<Integer> typeList=new ArrayList<Integer>();
 
+
     public MyRecycleViewAdapter( Context context) {
         mContext=context;
         inflater=LayoutInflater.from(context);
 
     }
 
-    public  void setDate(List<CustomItemMsg> SelectList , List<CustomItemMsg> NoSelectList)
+    public  void setDate(List<Classify> SelectList , List<Classify> NoSelectList)
     {
         Realposition.clear();
         typeList.clear();
@@ -104,29 +109,39 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
         final int index=position;
         if(holder instanceof SelectViewHolder) {
             SelectViewHolder selectViewHolder=new SelectViewHolder(holder.itemView);
-            selectViewHolder.tv_app_name.setText(SelectList.get(index-1).getItem_namae());
+            selectViewHolder.tv_app_name.setText(SelectList.get(index-1).getClassName());
             selectViewHolder.plus_item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("zqh",NoSelectList.size()+","+SelectList.size());
+                    SelectList.get(index-1).setSelect(false);
                     NoSelectList.add(SelectList.get(index-1));
                     SelectList.remove(index-1);
-                    Log.d("zqh",NoSelectList.size()+","+SelectList.size());
                     setDate(SelectList ,NoSelectList);
                     notifyDataSetChanged();
                 }
             });
         } else if (holder instanceof  NoSelectViewHolder){
             final NoSelectViewHolder noSelectViewHolder=new NoSelectViewHolder(holder.itemView);
-            noSelectViewHolder.tv_app_name.setText(NoSelectList.get(index-2-SelectList.size()).getItem_namae());
+            noSelectViewHolder.tv_app_name.setText(NoSelectList.get(index-2-SelectList.size()).getClassName());
             noSelectViewHolder.add_item.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.d("xyz",""+index);
+                    NoSelectList.get(index-2-SelectList.size()).setSelect(true);
                     SelectList.add(NoSelectList.get(index-2-SelectList.size()));
                     NoSelectList.remove(index-1-SelectList.size());
                     setDate(SelectList ,NoSelectList);
                     notifyDataSetChanged();
+                }
+            });
+        }
+
+        else if(holder instanceof  NoSelectTitleViewHolder)
+        {
+            NoSelectTitleViewHolder noSelectTitleViewHolder=new NoSelectTitleViewHolder(holder.itemView);
+            noSelectTitleViewHolder.iv_xinjian.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showAlterDialog();
                 }
             });
         }
@@ -155,7 +170,52 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    public List<CustomItemMsg> getSelectList() {
+    public List<Classify> getSelectList() {
         return SelectList;
+    }
+
+    public List<Classify> getNoSelectList() {
+        return NoSelectList;
+    }
+
+    private void showAlterDialog()
+    {
+        LayoutInflater inflater=LayoutInflater.from(mContext);
+        View view=inflater.inflate(R.layout.showalterdialog_xinjian,null);
+        final EditText et_name;
+        Button btn_xinjian,btn_quxiao;
+        btn_xinjian= (Button) view.findViewById(R.id.btn_xinjian);
+        btn_quxiao= (Button) view.findViewById(R.id.btn_quxiao);
+        et_name= (EditText) view.findViewById(R.id.et_name);
+        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+        builder.setView(view);
+        final AlertDialog dialog=builder.create();
+        dialog.show();
+
+        btn_xinjian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!et_name.getText().toString().isEmpty())
+                {
+                    Classify new_classify=new Classify();
+                    new_classify.setClassName(et_name.getText().toString());
+                    new_classify.setType(MyApplication.getClassifies().size()+1);
+                    new_classify.setSelect(false);
+                    NoSelectList.add(new_classify);
+                    setDate(SelectList,NoSelectList);
+                    notifyDataSetChanged();
+                    dialog.dismiss();
+                }
+                else{
+                    Toast.makeText(MyApplication.getContext(),"新建的类名不能为空",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btn_quxiao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 }

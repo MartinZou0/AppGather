@@ -1,11 +1,10 @@
 package com.appgather;
 
-import com.alibaba.fastjson.JSON;
-import com.appgather.entity.ResultData;
+import android.util.Log;
+
+import com.appgather.util.SharedPreferenceUtil;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -15,8 +14,14 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        ResultData resultData;
-        resultData=JSON.parseObject("{\"status\":\"0\",\"info\":\"\\u7528\\u6237\\u540d\\u5fc5\\u987b\\u4e3a\\u624b\\u673a\\u53f7\"}",ResultData.class);
-        System.out.println(resultData.getInfo());
+
+        if(SharedPreferenceUtil.CommitDate("name","周庆华"))
+        {
+            Log.d("xyz","数据保存成功");
+        }
+        else{
+            Log.d("xyz","数据保存失败");
+        }
+
     }
 }

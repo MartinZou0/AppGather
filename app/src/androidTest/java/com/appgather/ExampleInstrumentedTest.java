@@ -3,6 +3,9 @@ package com.appgather;
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
+
+import com.appgather.util.SharedPreferenceUtil;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,9 +21,14 @@ import static org.junit.Assert.*;
 public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+        
+        if(SharedPreferenceUtil.CommitDate("name","周庆华"))
+        {
+            Log.d("xyz","数据保存成功");
+        }
+        else{
+            Log.d("xyz","数据保存失败");
+        }
 
-        assertEquals("com.appgather", appContext.getPackageName());
     }
 }

@@ -2,40 +2,39 @@ package com.appgather.activity;
 
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Build;
-import android.os.IBinder;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.alibaba.fastjson.JSON;
 import com.appgather.R;
+import com.appgather.entity.Apps;
+import com.appgather.entity.Classify;
 import com.appgather.sdk.API;
 import com.appgather.util.MD5;
+import com.appgather.util.SharedPreferenceUtil;
 import com.appgather.view.TextWatcherForJudge;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_loginname;
     private EditText et_loginpassword;
-
     private TextWatcher textWatcherForName;
     private TextWatcher textWatcherForPassword;
     private Button btn_login;
     private Button btn_register;
-
     private Button btn_forgetpassword;
-    private boolean isfocuseditname=false;
-    private boolean isfocuseditpassword=false;
 
 
     @Override
@@ -62,7 +61,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btn_forgetpassword=(Button)findViewById(R.id.btn_forgetpassword);
         btnListen();//按钮事件监听
         editviewFocus();//编辑框焦点事件监听
-        //inputModeListen();//软键盘弹出监听
         editViewListenInput();//编辑框输入监听
         setEt_usertel();//设置从找回密码页面传来的手机号
     }
@@ -90,31 +88,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    //
-    //监听软键盘弹出，屏幕上移,不遮挡登陆按钮
-   /* private void inputModeListen() {
-        et_loginpassword.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            //当键盘弹出隐藏的时候会 调用此方法。
-            @Override
-            public void onGlobalLayout() {
-                Rect r = new Rect();
-                //获取当前界面可视部分
-                LoginActivity.this.getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
-                //获取屏幕的高度
-                int screenHeight = LoginActivity.this.getWindow().getDecorView().getRootView().getHeight();
-                //此处就是用来获取键盘的高度的， 在键盘没有弹出的时候 此高度为0 键盘弹出的时候为一个正数
-                int heightDifference = screenHeight - r.bottom;
-                Log.d("dddd",""+isfocuseditname+"....."+isfocuseditpassword);
-                if (heightDifference > 0) {
-                    tv_blank.setVisibility(View.GONE);
-                } else {
-                    tv_blank.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-    }*/
-
-    //
     //监听文本框用户名和密码是否有输入
     private void editViewListenInput() {
         textWatcherForName = new TextWatcherForJudge() {
@@ -180,6 +153,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 else if(Ret==200)
                 {
+                    saveAppMsg();
+                    saveClassifyMsg();
                     Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
                     startActivity(intent2);
                     runOnUiThread(new Runnable() {
@@ -199,5 +174,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent intent=getIntent();//获得从找回密码页面传来的手机号
         String extra_phonenumber=intent.getStringExtra("extra_phonenumber");
         et_loginname.setText(extra_phonenumber);
+    }
+
+    /*
+    *保存APP数据
+     */
+    private void saveAppMsg()
+    {
+        List<Apps> apps=new ArrayList<Apps>();
+        apps.add(new Apps(1,"快递查询","file:///android_asset/kuaidi/index.html"));
+        apps.add(new Apps(2,"测试应用","file:///android_asset/test/index.html"));
+        apps.add(new Apps(3,"百度","https://www.baidu.com"));
+        String str=JSON.toJSONString(apps);
+       if(SharedPreferenceUtil.CommitDate("apps",str)) {
+           Log.d("zqh","Apps数据保存成功");
+       }
+       else{
+           Log.d("zqh","Apps数据保存失败");
+       }
+    }
+
+    /*
+      *保存分类标签数据
+     */
+    private void saveClassifyMsg()
+    {
+        List<Classify> classifies=new ArrayList<Classify>();
+        classifies.add(new Classify("工作",1,true));
+        classifies.add(new Classify("学习",2,true));
+        classifies.add(new Classify("娱乐",3,true));
+        classifies.add(new Classify("社交",4,true));
+        classifies.add(new Classify("阅读",5,true));
+        classifies.add(new Classify("购物",6,true));
+        String str=JSON.toJSONString(classifies);
+        if(SharedPreferenceUtil.CommitDate("classify",str)) {
+            Log.d("zqh","分类标签数据保存成功");
+        }
+        else{
+            Log.d("zqh","分类标签数据保存失败");
+        }
     }
 }

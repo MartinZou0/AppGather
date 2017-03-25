@@ -1,0 +1,42 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- ZUI 标准版压缩后的 CSS 文件 -->
+<!-- ZUI 标准版压缩后的 CSS 文件 -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/zui/1.5.0/css/zui.min.css">
+
+<!-- ZUI Javascript 依赖 jQuery -->
+<script src="http://cdn.bootcss.com/zui/1.5.0/lib/jquery/jquery.js"></script>
+<!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/zui/1.5.0/js/zui.min.js"></script>
+<title>快递查询</title>
+</head>
+
+<body style="background-color: #353535;">
+<div class="container-xs" style=" position: absolute;">
+  <div id="query" class="panel panel-primary">
+    <div class="panel-heading" style="text-align: center">快递查询</div>
+    <div class="panel-body">
+      <div class="input-group">
+        <input type="text" id="nu" class="form-control" placeholder="请输入快递单号">
+        <span class="input-group-addon fix-border fix-padding"></span>
+        <select class="form-control" id="com">
+          <option value="zhongtong">中通快递</option>
+          <option value="yuantong">圆通快递</option>
+          <option value="shunfeng">顺丰快递</option>
+          <option value="yunda">韵达快递</option>
+          <option value="shentong">申通快递</option>
+          <option value="huitongkuaidi">百世汇通</option>
+        </select>
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button" onClick="query()">查询</button>
+        </span> </div>
+    </div>
+    <div  id="queryRs" class="panel-footer" style="display: none;">
+  </div>
+</div>
+</div>
+</body>
+<script src="function.js"></script>
+</html>

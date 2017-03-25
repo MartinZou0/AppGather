@@ -31,13 +31,14 @@
                 android:focusableInTouchMode="false"
                 android:scrollbars="none" >
 
-                <com.appgather.view.ViewPagerIndicator
-                    android:id="@+id/id_indicator"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:orientation="horizontal"
-                    mmsx:item_count="4" >
-                </com.appgather.view.ViewPagerIndicator>
+                    <com.appgather.view.ViewPagerIndicator
+                        android:id="@+id/id_indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:orientation="horizontal"
+                        mmsx:item_count="4" >
+                    </com.appgather.view.ViewPagerIndicator>
+
             </com.appgather.view.BounceScrollView>
             <ImageView
                 android:layout_width="30dp"

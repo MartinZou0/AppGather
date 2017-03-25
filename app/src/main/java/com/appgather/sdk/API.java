@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.appgather.entity.API_Login;
 import com.appgather.entity.API_Register;
-import com.appgather.entity.ResultData;
+import com.appgather.entity.API_ResultData;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -40,7 +40,6 @@ public class API {
         SO.act="Login";
         SO.content = Send;
         OkHttpClient mOkHttpClient=new OkHttpClient();
-        Log.d("xyz",JSON.toJSONString(SO));
         RequestBody body = RequestBody.create(json, JSON.toJSONString(SO));
         final Request request = new Request.Builder()
                 .url(url)
@@ -57,8 +56,8 @@ public class API {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String a=response.body().string();
-                ResultData resultData=new ResultData();
-                resultData= JSON.parseObject(a,ResultData.class);
+                API_ResultData resultData=new API_ResultData();
+                resultData= JSON.parseObject(a,API_ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {
                     ret.ret(200,"登陆成功");
@@ -97,7 +96,7 @@ public class API {
             public void onResponse(Call call, final Response response) throws IOException {
                 String str=response.body().string();
                 Log.d("xyz",str);
-                ResultData resultData= JSONObject.parseObject(str,ResultData.class);
+                API_ResultData resultData= JSONObject.parseObject(str,API_ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {
                     ret.ret(200,"注册成功");

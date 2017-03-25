@@ -5,7 +5,7 @@ package com.appgather.entity;
  * 服务器返回来的结果集
  */
 
-public class ResultData {
+public class API_ResultData {
         private String status;
         private String info;
         public void setStatus(String status) {

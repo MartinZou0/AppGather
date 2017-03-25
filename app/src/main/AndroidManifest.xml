@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,12 +22,9 @@
         <activity android:name=".activity.SecuritycodeActivity"></activity>
         <activity
             android:name=".activity.MainInterfaceActivity"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
-        <activity
-            android:name=".activity.AppDetailViewActivity"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:launchMode="singleTask"
+            >
 
         </activity>
         <activity android:name=".activity.FindPassword">

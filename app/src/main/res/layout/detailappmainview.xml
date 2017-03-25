@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@color/colorPrimary"
-        android:text="百度"
+        android:id="@+id/tv_appName"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="18sp"

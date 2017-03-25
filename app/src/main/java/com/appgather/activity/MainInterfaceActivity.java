@@ -7,21 +7,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.appgather.R;
-import com.appgather.entity.CustomItemMsg;
+import com.appgather.application.MyApplication;
+import com.appgather.entity.Classify;
 import com.appgather.fragment.VpSimpleFragment;
 import com.appgather.view.BounceScrollView;
-import com.appgather.view.SlideMenu;
 import com.appgather.view.ViewPagerIndicator;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainInterfaceActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,7 +29,6 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
     private List<Fragment> mTabContents = new ArrayList<Fragment>();
     private FragmentPagerAdapter mAdapter;
     private ViewPager mViewPager;
-    //private List<String> mDatas = Arrays.asList("工作", "学习", "娱乐");
     private List<String> mDatas = new ArrayList<String>();
     private ViewPagerIndicator mIndicator;
     private BounceScrollView mScrollView;
@@ -43,15 +38,26 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_main_interface);
         getSupportActionBar().hide();
         initView();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         initItemDate();
         initDatas();
         initTab();
     }
 
     private void initItemDate() {
-        mDatas.add("工作");
-        mDatas.add("学习");
-        mDatas.add("娱乐");
+        int size= MyApplication.getClassifies().size();
+        mDatas.clear();
+        if(size>0)
+        {
+            for(int i=0;i<size;i++){
+                mDatas.add(MyApplication.getClassifies().get(i).getClassName());
+            }
+        }
     }
 
     /**
@@ -70,9 +76,9 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
     private void initDatas()
     {
         mTabContents.clear();
-        for (String data : mDatas)
+        for (Classify data : MyApplication.getClassifies())
         {
-            VpSimpleFragment fragment = VpSimpleFragment.newInstance(data);
+            VpSimpleFragment fragment = VpSimpleFragment.newInstance(data.getType()+"");
             mTabContents.add(fragment);
         }
 
@@ -157,19 +163,17 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==1)
         {
-            Log.d("zqh",""+1);
             mDatas.clear();
-            List<CustomItemMsg>  resultDate= (List<CustomItemMsg>) data.getSerializableExtra("SelectItem");
+            List<Classify>  resultDate= (List<Classify>) data.getSerializableExtra("SelectItem");
             int index=resultDate.size();
             for(int i=0;i<index;i++)
             {
-
-                Log.d("zqh",""+resultDate.get(i).getItem_namae());
-                mDatas.add(resultDate.get(i).getItem_namae());
+                mDatas.add(resultDate.get(i).getClassName());
             }
             initDatas();
             initTab();
         }
 
     }
+
 }

@@ -10,7 +10,8 @@ import android.widget.ListView;
 
 import com.appgather.R;
 import com.appgather.adapter.AppManageAdapter;
-import com.appgather.entity.AppMsg;
+import com.appgather.application.MyApplication;
+import com.appgather.entity.Apps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class AppManageActivity extends AppCompatActivity implements View.OnClick
 
     private AppManageAdapter adapter;
 
-    private List<AppMsg> mDate;
+    private List<Apps> mDate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,10 +48,9 @@ public class AppManageActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setDate() {
-        mDate=new ArrayList<AppMsg>();
-        mDate.add(new AppMsg("饿了么","http://www.baidu.com"));
-        mDate.add(new AppMsg("美团","http://www.baidu.com"));
-        mDate.add(new AppMsg("百度外卖","http://www.baidu.com"));
+        mDate=new ArrayList<Apps>();
+        mDate.addAll(MyApplication.getApps());
+
     }
 
     @Override

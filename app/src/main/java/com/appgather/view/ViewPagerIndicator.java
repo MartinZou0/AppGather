@@ -23,6 +23,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import com.appgather.R;
+import com.appgather.entity.Classify;
 
 public class ViewPagerIndicator extends LinearLayout
 {
@@ -46,6 +47,7 @@ public class ViewPagerIndicator extends LinearLayout
 	private int mTabVisibleCount;
 	// tab上的内容
 	private List<String> mTabTitles;
+	private List<Classify> mTitleList;
 	// 与之绑定的ViewPager
 	public ViewPager mViewPager;
 	// 标题正常时的颜色
@@ -127,6 +129,25 @@ public class ViewPagerIndicator extends LinearLayout
 			{
 				// 添加view
 				addView(generateTextView(title));
+			}
+			// 设置item的click事件
+			setItemClickEvent();
+		}
+
+	}
+	//设置tab的标题内容 可选，生成textview加入布局，灵活处理
+	public void setTabItemTitle(List<Classify> datas)
+	{
+		// 如果传入的list有值，则移除布局文件中设置的view
+		if (datas != null && datas.size() > 0)
+		{
+			this.removeAllViews();
+			mTitleList.addAll(datas);
+
+			for (Classify title : mTitleList)
+			{
+				// 添加view
+				addView(generateTextView(title.getClassName()));
 			}
 			// 设置item的click事件
 			setItemClickEvent();

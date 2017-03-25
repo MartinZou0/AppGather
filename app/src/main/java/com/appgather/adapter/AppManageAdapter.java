@@ -1,7 +1,6 @@
 package com.appgather.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.appgather.R;
-import com.appgather.entity.AppMsg;
+import com.appgather.entity.Apps;
 
 import java.util.List;
 
@@ -20,10 +19,10 @@ import java.util.List;
 
 public class AppManageAdapter extends BaseAdapter {
 
-    private List<AppMsg> appList;
+    private List<Apps> appList;
     private LayoutInflater inflater;
 
-    public AppManageAdapter(Context context,List<AppMsg> appList) {
+    public AppManageAdapter(Context context,List<Apps> appList) {
         this.appList = appList;
         inflater=LayoutInflater.from(context);
     }
@@ -58,7 +57,7 @@ public class AppManageAdapter extends BaseAdapter {
         {
             viewHolder= (ViewHolder) view.getTag();
         }
-        viewHolder.tv_appName.setText(appList.get(i).getAppnamae());
+        viewHolder.tv_appName.setText(appList.get(i).getAppName());
         return view;
     }
 
