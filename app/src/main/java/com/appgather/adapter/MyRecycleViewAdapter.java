@@ -1,6 +1,7 @@
 package com.appgather.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -105,7 +106,7 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final int index=position;
         if(holder instanceof SelectViewHolder) {
             SelectViewHolder selectViewHolder=new SelectViewHolder(holder.itemView);
@@ -120,6 +121,14 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                     notifyDataSetChanged();
                 }
             });
+            selectViewHolder.rl_select.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    show_deleteDialog("select",index-1);
+                    return true;
+                }
+            });
+
         } else if (holder instanceof  NoSelectViewHolder){
             final NoSelectViewHolder noSelectViewHolder=new NoSelectViewHolder(holder.itemView);
             noSelectViewHolder.tv_app_name.setText(NoSelectList.get(index-2-SelectList.size()).getClassName());
@@ -131,6 +140,14 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                     NoSelectList.remove(index-1-SelectList.size());
                     setDate(SelectList ,NoSelectList);
                     notifyDataSetChanged();
+                }
+            });
+
+            noSelectViewHolder.rl_noSelect.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    show_deleteDialog("noselect",index-2-SelectList.size());
+                    return true;
                 }
             });
         }
@@ -199,7 +216,8 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 {
                     Classify new_classify=new Classify();
                     new_classify.setClassName(et_name.getText().toString());
-                    new_classify.setType(MyApplication.getClassifies().size()+1);
+                    new_classify.setType(SelectList.size()+NoSelectList.size()+1);
+                    Log.d("zqh",SelectList.size()+NoSelectList.size()+1+"");
                     new_classify.setSelect(false);
                     NoSelectList.add(new_classify);
                     setDate(SelectList,NoSelectList);
@@ -217,5 +235,41 @@ public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.Vie
                 dialog.dismiss();
             }
         });
+    }
+
+    /**
+     * 显示删除AlterDialog
+     */
+    private void show_deleteDialog(final String type, final int position){
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(mContext);
+        builder.setTitle("确认删除这个分类吗？");
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(type.equals("select"))
+                {
+                    SelectList.remove(position);
+                }
+                else{
+                    NoSelectList.remove(position);
+                }
+                setDate(SelectList,NoSelectList);
+                notifyDataSetChanged();
+
+            }
+        });
+
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        final AlertDialog dialog=builder.create();
+        dialog.show();
+
+
     }
 }

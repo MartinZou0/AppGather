@@ -153,10 +153,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
                 else if(Ret==200)
                 {
-                    saveAppMsg();
-                    saveClassifyMsg();
+                    //saveAppMsg();
+                    //saveClassifyMsg();
                     Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
                     startActivity(intent2);
+                    /*
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -164,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(LoginActivity.this,Msg,Toast.LENGTH_SHORT).show();
 
                         }
-                    });
+                    });*/
 
                 }
             }

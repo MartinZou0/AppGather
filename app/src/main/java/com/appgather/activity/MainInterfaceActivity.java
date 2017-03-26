@@ -55,7 +55,10 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         if(size>0)
         {
             for(int i=0;i<size;i++){
-                mDatas.add(MyApplication.getClassifies().get(i).getClassName());
+                if(MyApplication.getClassifies().get(i).isSelect())
+                {
+                    mDatas.add(MyApplication.getClassifies().get(i).getClassName());
+                }
             }
         }
     }
