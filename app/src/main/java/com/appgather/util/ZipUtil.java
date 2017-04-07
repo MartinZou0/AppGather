@@ -24,8 +24,6 @@ public class ZipUtil {
         try {
             //传入源文件
             File fileOrDirectory= new File(src);
-
-            Log.d("zip11",""+fileOrDirectory.getName());
             File outFile= new File(dest);
             //传入压缩输出流
             //创建文件前几级目录
@@ -64,7 +62,6 @@ public class ZipUtil {
     }
 
     private static void zipFileOrDirectory(ZipOutputStream out, File fileOrDirectory, String curPath)throws IOException {
-        Log.d("zip22",""+fileOrDirectory.getName());
         FileInputStream in = null;
         try {
             //判断是否为目录
@@ -74,8 +71,6 @@ public class ZipUtil {
                 in= new FileInputStream(fileOrDirectory);//读目录中的子项
                 //归档压缩目录
                 ZipEntry entry = new ZipEntry(curPath + fileOrDirectory.getName());//压缩到压缩目录中的文件名字
-                Log.e("zip->zpEntry",entry.getName());
-                //java.io.File.getName() 方法返回的路径名的名称序列的最后一个名字，这意味着表示此抽象路径名的文件或目录的名称被返回。
                 //将压缩目录写到输出流中
                 out.putNextEntry(entry);//out是带有最初传进的文件信息，一直添加子项归档目录信息
                 while ((bytes_read= in.read(buffer))!= -1) {
@@ -117,7 +112,6 @@ public class ZipUtil {
             ZipEntry entry = ((ZipEntry)entries.nextElement());//默认为-1，next->下标0的位置
             InputStream is = zf.getInputStream(entry);
             String str = outPath + File.separator + entry.getName();
-            Log.e("entry",entry.getName());
             str = new String(str.getBytes("8859_1"),"GB2312");//压缩文件的编码是8859_1,此处可将其转换成指定的编码
             File desFile = new File(str);//其中单执行new file并不会在存储中创建文件或文件夹
             if(!desFile.exists()){
@@ -125,7 +119,6 @@ public class ZipUtil {
                 if(!fileParentDir.exists()){
                     fileParentDir.mkdirs();//多级目录同时创建  怕文件归档在很多级目录下,或者文件需要在很多级未创建目录下，mkdir不会创建父目录，mkdirs会
                 }
-                Log.e("des","dd");
                 desFile.createNewFile();//如果没有父目录将创建失败
             }
             FileOutputStream out = new FileOutputStream(desFile);
@@ -153,10 +146,6 @@ public class ZipUtil {
         return file;
     }
     public static void searchFile(File fileorfolder,String requestFile){
-
-
-        Log.d("searchFile",fileorfolder.getName());
-
         //是目录
         if(fileorfolder.isDirectory()){
 
@@ -167,9 +156,7 @@ public class ZipUtil {
             //是文件
         }else {
             //是传入文件名对应文件
-            Log.d("searchFile111",fileorfolder.getName());
             if (fileorfolder.getName().equals(requestFile)){//equals是比较字符串值是否相等
-                Log.d("searchFile555",fileorfolder.getName());
                 file=fileorfolder;
             }
         }
