@@ -2,6 +2,8 @@ package com.appgather;
 
 import android.util.Log;
 
+import com.appgather.application.MyApplication;
+import com.appgather.util.ReadAppConfigUtil;
 import com.appgather.util.SharedPreferenceUtil;
 
 import org.junit.Test;
@@ -15,13 +17,6 @@ public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
 
-        if(SharedPreferenceUtil.CommitDate("name","周庆华"))
-        {
-            Log.d("xyz","数据保存成功");
-        }
-        else{
-            Log.d("xyz","数据保存失败");
-        }
-
+       Log.d("xyz", ReadAppConfigUtil.readFile("file:///android_asset/kuaidi/config.json"));
     }
 }

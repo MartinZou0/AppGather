@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppGather</string>
+    <string name="app_name">云集</string>
     <string name="tv_username">昵称</string>
     <string name="et_hint_loginname">请输入手机号</string>
     <string name="et_hint_loginpassword">请输入密码</string>

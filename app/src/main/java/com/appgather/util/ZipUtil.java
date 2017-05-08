@@ -18,6 +18,7 @@ import java.util.zip.ZipOutputStream;
 
 public class ZipUtil {
 
+
     public static void zip(String src,String dest) throws IOException {
         //定义压缩输出流
         ZipOutputStream out = null;
@@ -60,6 +61,7 @@ public class ZipUtil {
             }
         }
     }
+
 
     private static void zipFileOrDirectory(ZipOutputStream out, File fileOrDirectory, String curPath)throws IOException {
         FileInputStream in = null;

@@ -36,6 +36,7 @@ repositories {
         compile files('libs/fastjson-1.2.8.jar')
         compile files('libs/MobCommons-2016.1201.1839.jar')
         compile name: 'SMSSDK-2.1.3', ext: 'aar'
+        compile 'org.apache.httpcomponents:httpcore:4.4.4'
     }
 }
 dependencies {

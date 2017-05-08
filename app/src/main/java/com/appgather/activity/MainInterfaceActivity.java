@@ -23,7 +23,7 @@ import java.util.List;
 public class MainInterfaceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DrawerLayout mdrawerLayout;
-    private TextView tv_personalcentre,tv_appManage;
+    private TextView tv_personalcentre,tv_appManage,tv_appStore;
     private ImageView mbutton;
     private ImageView iv_addItem;
     private List<Fragment> mTabContents = new ArrayList<Fragment>();
@@ -104,6 +104,8 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
     private void initView() {
         tv_appManage= (TextView) findViewById(R.id.tv_appManage);
         tv_appManage.setOnClickListener(this);
+        tv_appStore= (TextView) findViewById(R.id.tv_appStore);
+        tv_appStore.setOnClickListener(this);
         tv_personalcentre= (TextView) findViewById(R.id.tv_personalcenter);
         tv_personalcentre.setOnClickListener(this);
         mScrollView = (BounceScrollView) findViewById(R.id.id_scrollview);
@@ -139,18 +141,23 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        Intent intent;
         switch(view.getId())
         {
             case R.id.tv_personalcenter:
-                Intent intent=new Intent(MainInterfaceActivity.this,PersonalCentreActivity.class);
+                intent=new Intent(MainInterfaceActivity.this,PersonalCentreActivity.class);
                 startActivity(intent);
                 break;
             case R.id.addItem:
                 customItem();
                 break;
             case R.id.tv_appManage:
-                Intent intent1=new Intent(this,AppManageActivity.class);
-                startActivity(intent1);
+                intent=new Intent(this,AppManageActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_appStore:
+                intent=new Intent(this,AppStoreActivity.class);
+                startActivity(intent);
                 break;
         }
     }

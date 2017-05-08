@@ -1,32 +1,34 @@
 package com.appgather.util;
 
 import android.content.Context;
+import android.util.Log;
 
+import org.apache.http.util.EncodingUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * Created by qinghua on 2017/3/15.
+ * 读取配置文件的工具类
  */
 
 public class ReadAppConfigUtil {
-    public static Properties getAppConfigMsg(Context context)
-    {
-        Properties urlProps;
-        Properties props = new Properties();
-        try {
-            //方法一：通过activity中的context攻取setting.properties的FileInputStream
-            //注意这地方的参数appConfig在eclipse中应该是appConfig.properties才对,但在studio中不用写后缀
-            //InputStream in = c.getAssets().open("appConfig.properties");
-           // InputStream in = c.getAssets().open("appConfig");
-            //方法二：通过class获取setting.properties的FileInputStream
-            InputStream in = ReadAppConfigUtil.class.getResourceAsStream("/assets/index.properties");
-            props.load(in);
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        urlProps = props;
-        return urlProps;
+
+    private final static String filename="config.json";
+    public static String readFile(String url) throws IOException {
+        File file = new File(url+filename);
+        String res;
+        FileInputStream fis = new FileInputStream(file);
+        int length = fis.available();
+        byte [] buffer = new byte[length];
+        fis.read(buffer);
+        res = EncodingUtils.getString(buffer, "UTF-8");
+        fis.close();
+        return res;
     }
+
 }
