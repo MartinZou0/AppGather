@@ -92,6 +92,7 @@ public class CustomItemsActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.tv_ok:
+
                 MyApplication.setClassifies(adapter.getSelectList());
                 MyApplication.getClassifies().addAll(adapter.getNoSelectList());
                 MyApplication.saveClassfyMsg();

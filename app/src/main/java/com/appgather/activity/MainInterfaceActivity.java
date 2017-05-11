@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -81,8 +82,11 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         mTabContents.clear();
         for (Classify data : MyApplication.getClassifies())
         {
-            VpSimpleFragment fragment = VpSimpleFragment.newInstance(data.getType()+"");
-            mTabContents.add(fragment);
+            if(data.isSelect()){
+                VpSimpleFragment fragment = VpSimpleFragment.newInstance(data.getType()+"");
+                mTabContents.add(fragment);
+            }
+
         }
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager())

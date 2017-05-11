@@ -177,42 +177,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         et_loginname.setText(extra_phonenumber);
     }
 
-    /*
-    *保存APP数据
-     */
-    private void saveAppMsg()
-    {
-        List<Apps> apps=new ArrayList<Apps>();
-        apps.add(new Apps(1,"快递查询","file:///android_asset/kuaidi/index.html"));
-        apps.add(new Apps(2,"测试应用","file:///android_asset/test/index.html"));
-        apps.add(new Apps(3,"百度","https://www.baidu.com"));
-        String str=JSON.toJSONString(apps);
-       if(SharedPreferenceUtil.CommitDate("apps",str)) {
-           Log.d("zqh","Apps数据保存成功");
-       }
-       else{
-           Log.d("zqh","Apps数据保存失败");
-       }
-    }
 
-    /*
-      *保存分类标签数据
-     */
-    private void saveClassifyMsg()
-    {
-        List<Classify> classifies=new ArrayList<Classify>();
-        classifies.add(new Classify("工作",1,true));
-        classifies.add(new Classify("学习",2,true));
-        classifies.add(new Classify("娱乐",3,true));
-        classifies.add(new Classify("社交",4,true));
-        classifies.add(new Classify("阅读",5,true));
-        classifies.add(new Classify("购物",6,true));
-        String str=JSON.toJSONString(classifies);
-        if(SharedPreferenceUtil.CommitDate("classify",str)) {
-            Log.d("zqh","分类标签数据保存成功");
-        }
-        else{
-            Log.d("zqh","分类标签数据保存失败");
-        }
-    }
 }
