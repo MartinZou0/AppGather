@@ -1,8 +1,12 @@
 package com.appgather;
 
-import org.junit.Test;
+import android.util.Log;
 
-import static org.junit.Assert.*;
+import com.appgather.application.MyApplication;
+import com.appgather.util.ReadAppConfigUtil;
+import com.appgather.util.SharedPreferenceUtil;
+
+import org.junit.Test;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +16,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+
+       Log.d("xyz", ReadAppConfigUtil.readFile("file:///android_asset/kuaidi/config.json"));
     }
 }

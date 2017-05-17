@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/blue"
+        android:text="百度"
+        android:id="@+id/tv_appName"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="18sp"
+        />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="10dp"
+        android:layout_height="match_parent"
         >
         <WebView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:id="@+id/mapView_app"
             >
         </WebView>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/xianshi"
-            android:layout_gravity="bottom|right"
-            android:id="@+id/showAppname"
-            />
     </FrameLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue"
-        >
-
-
-    </LinearLayout>
 </LinearLayout>

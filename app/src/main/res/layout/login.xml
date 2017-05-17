@@ -7,140 +7,97 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-    <TextView
-        android:id="@+id/tv_blank"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
-<RelativeLayout
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="60dp"
-    android:paddingRight="60dp"
-    android:paddingBottom="60dp">
+    <RelativeLayout
 
-    <ImageView
-        android:id="@+id/iv_headportrait"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/photo" />
-    <TextView
-        android:id="@+id/tv_username"
-        android:layout_below="@id/iv_headportrait"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="\@you want  we want"/>
-    <TextView
-        android:layout_marginTop="70dp"
-        android:id="@+id/tv_divide1"
-        android:layout_below="@+id/tv_username"
+        android:id="@+id/loginbackground"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue"/>
-    <ImageView
-        android:id="@+id/iv_usericon"
-        android:layout_below="@+id/tv_divide1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="10dp"
-        android:background="@mipmap/user"/>
-    <EditText
-        android:id="@+id/et_loginname"
-        android:layout_below="@id/tv_divide1"
-        android:layout_toRightOf="@id/iv_usericon"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:hint="@string/et_hint_loginname"
-        android:textCursorDrawable="@null"
-        android:singleLine="true"
-        android:maxLength="11"
-        android:phoneNumber="true"
-        android:textSize="15sp"
-        android:background="@null"/>
-    <Button
-        android:id="@+id/btn_canclename"
-        android:visibility="invisible"
-        android:layout_below="@id/tv_divide1"
-        android:layout_toRightOf="@id/et_loginname"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@mipmap/cancle"/>
-    <TextView
-        android:id="@+id/tv_divide2"
-        android:layout_below="@id/iv_usericon"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue"/>
-    <ImageView
-        android:id="@+id/iv_passwordicon"
-        android:layout_below="@+id/tv_divide2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="10dp"
-        android:background="@mipmap/password"/>
-    <EditText
-        android:id="@+id/et_loginpassword"
-        android:layout_below="@id/tv_divide2"
-        android:layout_toRightOf="@id/iv_usericon"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:hint="@string/et_hint_loginpassword"
-        android:textCursorDrawable="@null"
-        android:singleLine="true"
-        android:maxLength="16"
-        android:password="true"
-        android:textSize="15sp"
-        android:background="@null"/>
-    <Button
-        android:id="@+id/btn_canclepassword"
-        android:visibility="invisible"
-        android:layout_below="@id/tv_divide2"
-        android:layout_toRightOf="@id/et_loginpassword"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@mipmap/cancle"/>
-    <TextView
-        android:id="@+id/iv_divide3"
-        android:layout_below="@id/iv_passwordicon"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue"/>
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/iv_divide3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/btn_login"
-        android:textSize="20sp"
-        android:enabled="false"
-        android:background="@drawable/myshape"/>
-    <Button
-        android:id="@+id/btn_forregister"
-        android:layout_below="@id/btn_login"
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_registerapp"
-        android:background="@color/lucency"/>
-    <Button
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/btn_login"
-        android:layout_toRightOf="@id/btn_forregister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_forgetpassword"
-        android:background="@color/lucency"/>
+        android:layout_height="match_parent"
+        android:background="#5fccffff">
+
+        <TextView
+            android:layout_marginTop="100dp"
+            android:id="@+id/iv_headportrait"
+            android:layout_centerHorizontal="true"
+            android:text="云集"
+            android:textSize="20sp"
+            android:textColor="#3f000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
 
 
-</RelativeLayout>
+
+        <EditText
+
+            android:layout_marginTop="50dp"
+            android:paddingLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/et_loginname"
+            android:layout_below="@id/iv_headportrait"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="@string/et_hint_loginname"
+            android:textCursorDrawable="@null"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:phoneNumber="true"
+            android:textSize="10sp"
+            android:background="@drawable/shape"/>
+
+
+
+        <EditText
+            android:layout_marginTop="10dp"
+           android:paddingLeft="20dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/et_loginpassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:hint="@string/et_hint_loginpassword"
+            android:textCursorDrawable="@null"
+            android:singleLine="true"
+            android:maxLength="16"
+            android:password="true"
+            android:textSize="10sp"
+            android:background="@drawable/shape"
+            android:layout_below="@+id/et_loginname" />
+
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/et_loginpassword"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:text="登陆"
+            android:textColor="#ffffff"
+            android:textSize="15sp"
+            android:background="@drawable/myshape"/>
+        <Button
+            android:layout_marginTop="150dp"
+            android:id="@+id/btn_forregister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_registerapp"
+            android:background="@color/lucency"
+            android:layout_below="@id/btn_login"
+            android:textColor="#ffffff"
+            android:layout_centerHorizontal="true" />
+        <Button
+
+            android:id="@+id/btn_forgetpassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_forgetpassword"
+            android:layout_below="@id/btn_forregister"
+            android:layout_centerHorizontal="true"
+            android:background="@color/lucency"
+            android:textColor="#ffffff"/>
+
+
+
+
+    </RelativeLayout>
 </LinearLayout>

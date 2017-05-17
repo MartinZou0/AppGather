@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">AppGather</string>
+    <string name="app_name">云集</string>
     <string name="tv_username">昵称</string>
-    <string name="et_hint_loginname">\@请输入手机号</string>
-    <string name="et_hint_loginpassword">\@请输入密码</string>
+    <string name="et_hint_loginname">请输入手机号</string>
+    <string name="et_hint_loginpassword">请输入密码</string>
     <string name="btn_login">登录</string>
     <string name="btn_registerapp">注册云集</string>
-    <string name="btn_forgetpassword">忘记密码?</string>
+    <string name="btn_forgetpassword">忘记密码</string>
     <string name="tv_registertel">+86</string>
     <string name="tv_registerpassword">密码</string>
     <string name="et_hint_registername">\@您的昵称</string>
@@ -16,4 +16,11 @@
     <string name="tv_code">验证码</string>
     <string name="et_hint_code">正确输入验证码将自动登录</string>
     <string name="tv_againgetcode">重新获取验证码</string>
+    <string name="tv_sendpassword">是否发送密码到您的手机?</string>
+    <string name="tv_find_phonenumber">请输入手机号：</string>
+    <string name="btn_affirmsendpassword">确认发送</string>
+    <string name="customItem">自定义分类</string>
+    <string name="custom_wc">完成</string>
+    <string name="custom_text1">已添加的分类</string>
+    <string name="custom_text2">未添加的分类</string>
 </resources>
