@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--制定内部填充色-->
     <solid android:color="#ffffff"/>
+
     <corners android:radius="15px"/>
     <stroke android:color="#ffffff"
         android:width="5px"

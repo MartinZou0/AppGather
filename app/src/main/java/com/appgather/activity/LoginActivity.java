@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+//还有没有完成功能
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_loginname;
@@ -90,28 +92,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     //监听文本框用户名和密码是否有输入
     private void editViewListenInput() {
-        textWatcherForName = new TextWatcherForJudge() {
+
+        textWatcherForName=new TextWatcherForJudge(){
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() != 0 && et_loginpassword.getText().toString().length() != 0) {
+            public void afterTextChanged(Editable editable) {
+                //见识用户名输入框，在两者都有输入的情况下才能点击登录按钮
+                if(editable.toString().length()==11&&et_loginpassword.getText().toString().length()!=0){
                     btn_login.setEnabled(true);
-                } else {
-                    btn_login.setEnabled(false);
                 }
+
             }
         };
         et_loginname.addTextChangedListener(textWatcherForName);
-
-        textWatcherForPassword = new TextWatcherForJudge() {
+        textWatcherForPassword=new TextWatcherForJudge(){
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() != 0 && et_loginname.getText().toString().length() != 0) {
+            public void afterTextChanged(Editable editable) {
+                if(editable.toString().length()!=0&&et_loginpassword.getText().toString().length()!=11){
                     btn_login.setEnabled(true);
-                } else {
-                    btn_login.setEnabled(false);
                 }
             }
         };
+
         et_loginpassword.addTextChangedListener(textWatcherForPassword);
 
     }
@@ -122,10 +123,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btn_forregister:
                 Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(intent);break;
-            case R.id.btn_login:
-                Login();
-                break;
+            case R.id.btn_login: {
+                //需要输入提示以及判断
+                if(et_loginname.getText().toString().length()==11&&et_loginpassword.getText().toString().length()>=6){
+                    //符合要求才调用方法
+                    Login();
+                }else if(et_loginname.getText().toString().length()!=11){
+                    Toast.makeText(this,"请输入正确的电话号码",Toast.LENGTH_SHORT).show();
+                    et_loginname.setText("");
+                }else if(et_loginpassword.getText().toString().length()<6){
+                    Toast.makeText(this,"请输入正确格式密码",Toast.LENGTH_SHORT).show();
+                    et_loginpassword.setText("");
+                }
 
+                break;
+            }
             case R.id.btn_forgetpassword:
                 Intent intent3=new Intent(LoginActivity.this,FindPassword.class);
                 startActivity(intent3);

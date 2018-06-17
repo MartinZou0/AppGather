@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.appgather.R;
 import com.appgather.adapter.AppManageAdapter;
@@ -20,6 +21,9 @@ import java.util.List;
  * Created by qinghua on 2017/2/14.
  */
 
+
+//正在完成
+//采用ListView显示应用管理
 public class AppManageActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ListView appManage_listView;
@@ -28,7 +32,7 @@ public class AppManageActivity extends AppCompatActivity implements View.OnClick
 
     private AppManageAdapter adapter;
 
-    private List<Apps> mDate;
+    private List<Apps> mappData;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,15 +46,17 @@ public class AppManageActivity extends AppCompatActivity implements View.OnClick
         appManage_listView= (ListView) findViewById(R.id.lv_appManage);
         iv_back= (ImageView) findViewById(R.id.back);
         iv_back.setOnClickListener(this);
-        setDate();
-        adapter=new AppManageAdapter(this,mDate);
+        setData();
+        adapter=new AppManageAdapter(this,mappData);
         appManage_listView.setAdapter(adapter);
     }
 
-    private void setDate() {
-        mDate=new ArrayList<Apps>();
-        mDate.addAll(MyApplication.getApps());
-
+    private void setData() {
+        //获取现有的应用列表信息
+        mappData=new ArrayList<Apps>();
+        for(Apps appsdata:MyApplication.getApps()){
+            mappData.add(appsdata);
+        }
     }
 
     @Override
@@ -58,6 +64,10 @@ public class AppManageActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId())
         {
             case R.id.back:
+                //进行保存操作
+                MyApplication.setApps(adapter.getAppList());
+                MyApplication.saveAppsdata_result();
+                Toast.makeText(this,"应用修改已完成",Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }

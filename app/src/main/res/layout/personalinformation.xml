@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--已完成-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -112,19 +114,19 @@
                 android:textSize="20sp"
                 android:textColor="@color/text_clo"
                 />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="10dp"
-                >
+                android:padding="10dp">
+
                 <ImageView
 
-                    android:background="@drawable/jinru"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="20dp"
-                    />
+                    android:background="@drawable/jinru" />
             </RelativeLayout>
 
         </LinearLayout>
@@ -302,29 +304,29 @@
             android:background="@color/border_clo"
             >
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:weightSum="3"
             android:orientation="vertical"
-            >
+            android:weightSum="3">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="24sp"
-                />
+                android:textSize="24sp" />
+
             <TextView
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:text="退出登录"
+                android:layout_gravity="center"
                 android:background="@drawable/anniubiankuang"
-                android:textSize="20sp"
+                android:gravity="center"
+                android:text="退出登录"
                 android:textColor="@color/white"
-                />
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 

@@ -10,21 +10,14 @@ import com.appgather.R;
 import com.appgather.view.CustomDialog;
 
 
-/**
- * Caiyuan Huang
- * <p>
- * 2015-6-9
- * </p>
- * <p>
- * 加载对话框
- * </p>
- */
+
 public class DlgLoading {
 	private CustomDialog dialog = null;
 	private LayoutInflater mInflater;
 	private TextView txtContent;
 
 	public DlgLoading(Context context) {
+		//获取上下文并将布局文件转换为VIew对象
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		init(context);

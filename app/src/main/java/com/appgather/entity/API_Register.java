@@ -6,6 +6,8 @@ import java.io.Serializable;
  * Created by qinghua on 2016/11/29.
  */
 
+//注册实体
+    //已编程
 public class API_Register implements Serializable {
     private String Username;//用户名即手机号
     private  String Password;//密码

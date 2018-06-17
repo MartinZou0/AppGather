@@ -17,6 +17,7 @@ import java.util.List;
  * Created by qinghua on 2017/3/17.
  */
 
+//已完成
 public class MyApplication extends Application {
 
     private static Context mContext;
@@ -24,14 +25,8 @@ public class MyApplication extends Application {
     private static List<Classify> classifies;//分类集合
     private static String APPS="apps";
     private static String CLASSIFY="classify";
-    @Override
-    public void onCreate(){
-        mContext = getApplicationContext();
-        getAppsMsg();
-        getClassfyMsg();
-        ToString();
-    }
 
+    //get，setter方法
     public static Context getContext() {
         return mContext;
     }
@@ -62,10 +57,22 @@ public class MyApplication extends Application {
             Log.d("zqh",classify+"");
         }
     }
+
+    //程序的入口
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = getApplicationContext();
+        getAppsMsg();
+        getClassfyMsg();
+        ToString();
+    }
+
+
     private  void getAppsMsg()
     {
         apps=new ArrayList<Apps>();
-        String data= SharedPreferenceUtil.getDate(APPS);
+        String data= SharedPreferenceUtil.getData(APPS);
         if(data!=null)
         {
             apps.addAll(JSONObject.parseArray(data,Apps.class));
@@ -74,6 +81,7 @@ public class MyApplication extends Application {
         else {
             saveAppMsg();
             Log.d("zqh","APPS访问数据不存在");
+            //回调过来
             getAppsMsg();
         }
     }
@@ -84,7 +92,7 @@ public class MyApplication extends Application {
     private void getClassfyMsg()
     {
         classifies=new ArrayList<Classify>();
-        String data= SharedPreferenceUtil.getDate(CLASSIFY);
+        String data= SharedPreferenceUtil.getData(CLASSIFY);
         if(data!=null)
         {
             classifies.addAll(JSONObject.parseArray(data,Classify.class));
@@ -92,7 +100,7 @@ public class MyApplication extends Application {
         }
         else {
             saveClassifyMsg();
-            data= SharedPreferenceUtil.getDate(CLASSIFY);
+            data= SharedPreferenceUtil.getData(CLASSIFY);
             classifies.addAll(JSONObject.parseArray(data,Classify.class));
         }
     }
@@ -100,10 +108,10 @@ public class MyApplication extends Application {
     /*
     *保存分类标签的信息
      */
-    public static void saveClassfyMsg()
+    public static void saveClassfyMsg_result()
     {
         String data= JSON.toJSONString(classifies);
-        if(SharedPreferenceUtil.CommitDate(CLASSIFY,data))
+        if(SharedPreferenceUtil.CommitData(CLASSIFY,data))
         {
             Log.d("zqh","分类标签保存成功！");
         }else{
@@ -114,7 +122,7 @@ public class MyApplication extends Application {
 
 
     /*
-      *c创建默认的分类标签数据
+      *创建默认的分类标签数据
      */
     private void saveClassifyMsg()
     {
@@ -126,7 +134,7 @@ public class MyApplication extends Application {
         classifies.add(new Classify("阅读",5,true));
         classifies.add(new Classify("购物",6,true));
         String str=JSON.toJSONString(classifies);
-        if(SharedPreferenceUtil.CommitDate("classify",str)) {
+        if(SharedPreferenceUtil.CommitData("classify",str)) {
             Log.d("zqh","分类标签数据保存成功");
         }
         else{
@@ -140,15 +148,30 @@ public class MyApplication extends Application {
     private void saveAppMsg()
     {
         List<Apps> apps=new ArrayList<Apps>();
+        //apps.add(new Apps(1,"百度","https://www.baidu.com"));
         apps.add(new Apps(1,"快递查询","file:///android_asset/kuaidi/index.html"));
         apps.add(new Apps(2,"测试应用","file:///android_asset/test/index.html"));
-        apps.add(new Apps(3,"百度","https://www.baidu.com"));
+       apps.add(new Apps(3,"百度","https://www.baidu.com"));
+        apps.add(new Apps(4,"日历","file:///data/data/com.appgather/calendar/calendar.html"));
+        //生成Json字符串格式
         String str=JSON.toJSONString(apps);
-        if(SharedPreferenceUtil.CommitDate("apps",str)) {
+        if(SharedPreferenceUtil.CommitData("apps",str)) {
             Log.d("zqh","Apps数据保存成功");
         }
         else{
             Log.d("zqh","Apps数据保存失败");
         }
+    }
+
+
+    public static void saveAppsdata_result(){
+        String data= JSON.toJSONString(apps);
+        if(SharedPreferenceUtil.CommitData(APPS,data))
+        {
+            Log.d("zsy","应用更改保存成功保存成功！");
+        }else{
+            Log.d("zsy","应用更改保存失败保存失败！");
+        }
+
     }
 }

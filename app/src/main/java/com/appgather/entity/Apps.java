@@ -7,10 +7,13 @@ import java.io.Serializable;
  * 应用信息实体类
  */
 
+
+//已完成
 public class Apps implements Serializable{
     private int CategoryID;//分类ID
     private String  AppName;//应用名
     private String url;//应用访问地址
+    private  boolean isondisplay;//是否在显示
 
     public Apps()
     {
@@ -18,9 +21,11 @@ public class Apps implements Serializable{
     }
 
     public Apps(int categoryID, String appName, String url) {
+        //初始值默认为显示
         CategoryID = categoryID;
         AppName = appName;
         this.url = url;
+        this.isondisplay=true;
     }
 
     public String getUrl() {
@@ -45,6 +50,14 @@ public class Apps implements Serializable{
 
     public void setAppName(String appName) {
         AppName = appName;
+    }
+
+    public boolean getIsondisplay() {
+        return isondisplay;
+    }
+
+    public void setIsOnDisplay(boolean isondisplay) {
+        this.isondisplay = isondisplay;
     }
 
     @Override

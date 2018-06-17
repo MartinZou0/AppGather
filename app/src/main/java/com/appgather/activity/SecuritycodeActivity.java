@@ -22,15 +22,23 @@ import cn.smssdk.SMSSDK;
 import okhttp3.MediaType;
 import static com.appgather.R.id.et_registername;
 
+
+//已进行编程
 public class SecuritycodeActivity extends AppCompatActivity {
     private API_Register mregister=new API_Register();
+    private API_Register register;
+
     private TextView tv_usertel;
     private EditText et_SecurityCode;
     private TextWatcher getTextWatcherForTel;
-    private API_Register register;
+
+    //SMS使用
     private String APPKEY="19d0dd727bd31";
     private String APPSECRET="0d27b9eb2adea0707844d81a62e8edae";
-    private DlgLoading dlgLoading;//加载对话框
+
+    //加载对话框
+    private DlgLoading dlgLoading;
+
     public static final MediaType json=MediaType.parse("application/json; charset=utf-8");
     /**
      * 短信验证监听器

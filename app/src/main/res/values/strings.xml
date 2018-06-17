@@ -1,3 +1,4 @@
+<!--已经完成-->
 <resources>
     <string name="app_name">云集</string>
     <string name="tv_username">昵称</string>
@@ -23,4 +24,5 @@
     <string name="custom_wc">完成</string>
     <string name="custom_text1">已添加的分类</string>
     <string name="custom_text2">未添加的分类</string>
+    <string name="appname">云集</string>
 </resources>

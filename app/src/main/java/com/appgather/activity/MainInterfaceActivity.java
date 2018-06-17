@@ -21,16 +21,18 @@ import com.appgather.view.ViewPagerIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
+//正在编程
 public class MainInterfaceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DrawerLayout mdrawerLayout;
     private TextView tv_personalcentre,tv_appManage,tv_appStore;
     private ImageView mbutton;
     private ImageView iv_addItem;
+    private List<String> mDatas = new ArrayList<String>();
     private List<Fragment> mTabContents = new ArrayList<Fragment>();
     private FragmentPagerAdapter mAdapter;
     private ViewPager mViewPager;
-    private List<String> mDatas = new ArrayList<String>();
+
     private ViewPagerIndicator mIndicator;
     private BounceScrollView mScrollView;
     @Override
@@ -42,68 +44,6 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        initItemDate();
-        initDatas();
-        initTab();
-    }
-
-    private void initItemDate() {
-        int size= MyApplication.getClassifies().size();
-        mDatas.clear();
-        if(size>0)
-        {
-            for(int i=0;i<size;i++){
-                if(MyApplication.getClassifies().get(i).isSelect())
-                {
-                    mDatas.add(MyApplication.getClassifies().get(i).getClassName());
-                }
-            }
-        }
-    }
-
-    /**
-     * 初始化标题
-     */
-    private void initTab() {
-        //设置Tab上的标题
-        mIndicator.setTabItemTitles(mDatas);
-        mViewPager.setAdapter(mAdapter);
-        //设置关联的ViewPager
-        mIndicator.setViewPager(mViewPager,mScrollView,0);
-        //设置关联的图片旋转，根据需要设置，效果不是很好
-        //mScrollView.setRotatImageView(mRotatImageView);
-    }
-
-    private void initDatas()
-    {
-        mTabContents.clear();
-        for (Classify data : MyApplication.getClassifies())
-        {
-            if(data.isSelect()){
-                VpSimpleFragment fragment = VpSimpleFragment.newInstance(data.getType()+"");
-                mTabContents.add(fragment);
-            }
-
-        }
-
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager())
-        {
-            @Override
-            public int getCount()
-            {
-                return mTabContents.size();
-            }
-
-            @Override
-            public Fragment getItem(int position)
-            {
-                return mTabContents.get(position);
-            }
-        };
-    }
 
     private void initView() {
         tv_appManage= (TextView) findViewById(R.id.tv_appManage);
@@ -144,6 +84,74 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        initItemDate();
+        initDatas();
+        initTab();
+    }
+
+    //初始化标签页信息
+    private void initItemDate() {
+        int size= MyApplication.getClassifies().size();
+        mDatas.clear();
+        if(size>0)
+        {
+            for(int i=0;i<size;i++){
+                if(MyApplication.getClassifies().get(i).isSelect())
+                {
+                    mDatas.add(MyApplication.getClassifies().get(i).getClassName());
+                }
+            }
+        }
+    }
+
+    /**
+     * 初始化标题
+     */
+    private void initTab() {
+        //设置Tab上的标题
+        mIndicator.setTabItemTitles(mDatas);
+        mViewPager.setAdapter(mAdapter);
+        //设置关联的ViewPager
+        mIndicator.setViewPager(mViewPager,mScrollView,0);
+        //设置关联的图片旋转，根据需要设置，效果不是很好
+        //mScrollView.setRotatImageView(mRotatImageView);
+    }
+
+    //初始化Tab页中的Fragment
+    private void initDatas()
+    {
+        //list清空
+        mTabContents.clear();
+        for (Classify data : MyApplication.getClassifies())
+        {
+            if(data.isSelect()){
+                VpSimpleFragment fragment = VpSimpleFragment.newInstance(data.getType()+"");
+                mTabContents.add(fragment);
+            }
+
+        }
+
+        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager())
+        {
+            @Override
+            public int getCount()
+            {
+                return mTabContents.size();
+            }
+
+            @Override
+            public Fragment getItem(int position)
+            {
+                return mTabContents.get(position);
+            }
+        };
+    }
+
+
+
+    @Override
     public void onClick(View view) {
         Intent intent;
         switch(view.getId())
@@ -172,6 +180,13 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         startActivityForResult(intent1,1);
     }
 
+     /*
+    * 如果你想在Activity中得到新打开Activity关闭后返回的数据，
+    * 你需要使用系统提供的startActivityForResult(Intent intent,int requestCode)方法打开新的Activity，
+    * 新的Activity关闭后会向前面的Activity传回数据，为了得到传回的数据，你必须在前面的Activity中重写onActivityResult(int requestCode, int resultCode,Intent data)方法：
+    * */
+
+    //应用更改,改动信息接收方
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

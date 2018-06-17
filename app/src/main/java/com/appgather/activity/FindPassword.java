@@ -1,5 +1,7 @@
 package com.appgather.activity;
 
+
+//正在编程
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,8 @@ public class FindPassword extends AppCompatActivity {
         btn_sendpassword=(Button)findViewById(R.id.btn_sendpassword);
         et_phonenumber=(EditText)findViewById(R.id.et_phonenumber);
     }
+
+    //需要进行大规模更改
     private void setBtn_sendpassword(){
         btn_sendpassword.setOnClickListener(new View.OnClickListener() {
             @Override

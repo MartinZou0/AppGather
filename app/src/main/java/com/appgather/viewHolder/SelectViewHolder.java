@@ -23,9 +23,11 @@ public class SelectViewHolder extends CustomItemHolder {
 
     public SelectViewHolder(View itemView) {
         super(itemView);
+        //第一个减号
         plus_item= (ImageView) itemView.findViewById(R.id.plus_item);
         app_logo= (ImageView) itemView.findViewById(R.id.app_logo);
         tv_app_name= (TextView) itemView.findViewById(R.id.app_name);
         rl_select= (RelativeLayout) itemView.findViewById(R.id.rl_select);
+        //用这个来进行已选择项目的装载
     }
 }

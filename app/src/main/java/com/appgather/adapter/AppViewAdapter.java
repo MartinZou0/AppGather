@@ -20,6 +20,8 @@ import com.appgather.entity.Apps;
  * 显示功能块的适配器
  */
 
+
+//已完成，这个包含了对于webView的控制
 public class AppViewAdapter extends BaseAdapter{
     private List<Apps> urllist;
     private LayoutInflater inflater;

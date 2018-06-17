@@ -25,6 +25,7 @@ import java.util.List;
 import com.appgather.R;
 import com.appgather.entity.Classify;
 
+//可以不用直接用就行了
 public class ViewPagerIndicator extends LinearLayout
 {
 	//绘制三角形的画笔

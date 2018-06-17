@@ -10,6 +10,7 @@ import com.appgather.R;
  * Created by qinghua on 2016/12/21.
  */
 
+//已完成
 public class PersonalCentreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

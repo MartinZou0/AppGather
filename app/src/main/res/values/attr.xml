@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--已实现-->
 <resources>
 
     <attr name="rightPadding" format="dimension">

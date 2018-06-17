@@ -7,6 +7,7 @@ import java.util.List;
  * 应用分类标签实体
  */
 
+//已完成
 public class Classify {
 
     private String className;

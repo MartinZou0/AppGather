@@ -5,7 +5,7 @@
     android:padding="30dp"
     android:background="#5fccffff">
 
-
+<!--已经完成这个界面-->
     <EditText
 
         android:layout_marginTop="100dp"

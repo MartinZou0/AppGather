@@ -45,7 +45,7 @@
                 android:layout_height="30dp"
                 android:id="@+id/addItem"
                 android:background="@drawable/add"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:layout_marginRight="5dp"
                 />
         </LinearLayout>
@@ -68,3 +68,4 @@
         <include layout="@layout/main_menu" />
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>
+

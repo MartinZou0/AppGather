@@ -7,9 +7,6 @@ import android.widget.TextView;
 
 import com.appgather.R;
 
-/**
- * Created by qinghua on 2017/2/13.
- */
 
 public class NoSelectViewHolder extends CustomItemHolder {
 
@@ -27,5 +24,6 @@ public class NoSelectViewHolder extends CustomItemHolder {
         app_logo= (ImageView) itemView.findViewById(R.id.app_logo);
         tv_app_name= (TextView) itemView.findViewById(R.id.app_name);
         rl_noSelect= (RelativeLayout) itemView.findViewById(R.id.rl_noSelect);
+        //用来加载未选择项目的布局
     }
 }
