@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 
 
-//已取代
+//已取代,自定义滑动菜单
 public class SlideMenu extends ViewGroup {
 	public static final int SCREEN_MENU = 0;
 	public static final int SCREEN_MAIN = 1;

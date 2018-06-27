@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import com.appgather.R;
 
 //已完成
+//自定义控件，圆形框框
 public class CircleImageView extends android.support.v7.widget.AppCompatImageView{
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

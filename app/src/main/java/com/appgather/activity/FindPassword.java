@@ -2,6 +2,7 @@ package com.appgather.activity;
 
 
 //正在编程
+//还与没有服务器建立有效反馈，仍然欠缺第三方SMSDK调用
 import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;

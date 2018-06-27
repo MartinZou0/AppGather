@@ -21,9 +21,6 @@ import com.appgather.entity.Classify;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by qinghua on 2017/2/13.
- */
 
 
 //修改标签页活动，由RecycleVIew组成组成

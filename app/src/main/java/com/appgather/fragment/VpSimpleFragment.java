@@ -15,6 +15,7 @@ import com.appgather.application.MyApplication;
 import com.appgather.entity.Apps;
 
 //已完成
+//配合FragmentVIewpager进行应用的显示，每一个fragment里都会有一个listview
 public class VpSimpleFragment extends Fragment
 {
 	public static final String BUNDLE_TITLE = "title";

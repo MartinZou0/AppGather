@@ -5,6 +5,7 @@ package com.appgather.entity;
  */
 
 //已完成。。
+    //登录的用户信息
 public class API_Login {
 
     private String Username;//用户名

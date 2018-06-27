@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.appgather.R;
 
 
+//未选择的viewholder
+
 public class NoSelectViewHolder extends CustomItemHolder {
 
     public ImageView add_item;//添加按钮

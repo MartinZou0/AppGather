@@ -21,7 +21,7 @@ import com.appgather.view.ViewPagerIndicator;
 import java.util.ArrayList;
 import java.util.List;
 
-//正在编程
+//已经完成主要界面的
 public class MainInterfaceActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DrawerLayout mdrawerLayout;

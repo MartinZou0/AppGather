@@ -6,11 +6,9 @@ import android.view.WindowManager;
 
 import com.appgather.R;
 
-/**
- * Created by qinghua on 2016/12/21.
- */
 
-//已完成
+
+//已完成，个人中心的管理
 public class PersonalCentreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

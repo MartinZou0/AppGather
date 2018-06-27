@@ -15,9 +15,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-/**
- * Created by zspmh on 2016-11-29.
- */
+
+
+//API登录接口
 public class API {
     private static final MediaType json=MediaType.parse("application/json; charset=utf-8");
     //private static String url="http://www.appsgather.com/public/index.php/api" ;

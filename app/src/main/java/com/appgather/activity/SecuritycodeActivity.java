@@ -24,6 +24,7 @@ import static com.appgather.R.id.et_registername;
 
 
 //已进行编程
+//第三方SDK的使用，确实能够收到信息但是，与服务器那边无法取得有效交互
 public class SecuritycodeActivity extends AppCompatActivity {
     private API_Register mregister=new API_Register();
     private API_Register register;

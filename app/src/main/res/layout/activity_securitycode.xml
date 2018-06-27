@@ -8,7 +8,6 @@
     android:background="@color/background">
 
     <!--已经完成-->
-
     <TextView
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"

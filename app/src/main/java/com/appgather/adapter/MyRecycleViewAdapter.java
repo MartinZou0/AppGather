@@ -31,6 +31,7 @@ import java.util.Map;
 
 
 //进行设置，正在理解
+    //此适配器用于应用分类的显示
 public class MyRecycleViewAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     //选择加上未选择等于总项目数
     private List<Classify> SelectList=new ArrayList<Classify>();

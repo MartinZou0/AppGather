@@ -11,6 +11,8 @@ import com.appgather.view.CustomDialog;
 
 
 
+//自定义dialog
+
 public class DlgLoading {
 	private CustomDialog dialog = null;
 	private LayoutInflater mInflater;

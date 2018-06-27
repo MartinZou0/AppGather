@@ -8,5 +8,5 @@
         android:layout_height="58dp"
         android:text="百度小助手"
         android:textSize="20sp"
-     />
+      />
 </LinearLayout>

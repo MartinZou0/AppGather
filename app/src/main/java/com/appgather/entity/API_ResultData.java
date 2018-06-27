@@ -1,7 +1,7 @@
 package com.appgather.entity;
 
 /**
- * Created by qinghua on 2016/12/17.
+ *
  * 服务器返回来的结果集
  */
 

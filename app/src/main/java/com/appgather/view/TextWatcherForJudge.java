@@ -3,9 +3,7 @@ package com.appgather.view;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-/**
- * Created by acer on 2016/11/19.
- */
+
 
 //已编程
 public class TextWatcherForJudge implements TextWatcher {

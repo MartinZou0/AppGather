@@ -26,7 +26,7 @@ import com.appgather.R;
  * </p>
  */
 
-//正在编程
+//自定义dialog
 public class CustomDialog {
 	private Dialog dialog = null;
 	private Activity mActivity;

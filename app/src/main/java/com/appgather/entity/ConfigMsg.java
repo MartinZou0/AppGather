@@ -2,10 +2,8 @@ package com.appgather.entity;
 
 import java.util.Date;
 
-/**
- * Created by qinghua on 2017/3/15.
- */
 
+//配置信息
 public class ConfigMsg {
 
     private int CategoryID;//分类ID

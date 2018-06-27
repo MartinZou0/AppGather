@@ -25,10 +25,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by qinghua on 2017/4/11.
- */
 
+//应用商店活动
 public class AppStoreActivity extends AppCompatActivity {
 
     //用于关闭的静态活动实例

@@ -28,6 +28,7 @@ import java.util.List;
 
 
 //进行定义
+//登陆活动
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_loginname;
@@ -97,9 +98,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void afterTextChanged(Editable editable) {
                 //见识用户名输入框，在两者都有输入的情况下才能点击登录按钮
-               // if(editable.toString().length()==11&&et_loginpassword.getText().toString().length()!=0){
+                if(editable.toString().length()==11&&et_loginpassword.getText().toString().length()!=0){
                     btn_login.setEnabled(true);
-               // }
+               }
 
             }
         };
@@ -107,9 +108,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textWatcherForPassword=new TextWatcherForJudge(){
             @Override
             public void afterTextChanged(Editable editable) {
-                //if(editable.toString().length()!=0&&et_loginpassword.getText().toString().length()!=11){
+                if(editable.toString().length()!=0&&et_loginpassword.getText().toString().length()!=11){
                     btn_login.setEnabled(true);
-                //}
+                }
             }
         };
 
@@ -125,17 +126,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);break;
             case R.id.btn_login: {
                 //需要输入提示以及判断
-                Login();
-//                if(et_loginname.getText().toString().length()==11&&et_loginpassword.getText().toString().length()>=6){
-//                    //符合要求才调用方法
-//                    Login();
-//                }else if(et_loginname.getText().toString().length()!=11){
-//                    Toast.makeText(this,"请输入正确的电话号码",Toast.LENGTH_SHORT).show();
-//                    et_loginname.setText("");
-//                }else if(et_loginpassword.getText().toString().length()<6){
-//                    Toast.makeText(this,"请输入正确格式密码",Toast.LENGTH_SHORT).show();
-//                    et_loginpassword.setText("");
-//                }
+//                Login();
+                if(et_loginname.getText().toString().length()==11&&et_loginpassword.getText().toString().length()>=4){
+                    //符合要求才调用方法
+                    Login();
+                }else if(et_loginname.getText().toString().length()!=11){
+                    Toast.makeText(this,"请输入正确的电话号码",Toast.LENGTH_SHORT).show();
+                    et_loginname.setText("");
+                }else if(et_loginpassword.getText().toString().length()<6){
+                    Toast.makeText(this,"请输入正确格式密码",Toast.LENGTH_SHORT).show();
+                    et_loginpassword.setText("");
+                }
 
                 break;
             }

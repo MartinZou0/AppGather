@@ -30,8 +30,9 @@ import java.util.List;
  */
 
 
-//正在完成
+//
 //采用ListView显示应用管理
+//已完成，应用功能的管理
 public class AppManageActivity extends AppCompatActivity implements View.OnClickListener {
 
 

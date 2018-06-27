@@ -10,7 +10,7 @@ import android.widget.HorizontalScrollView;
 
 
 /**
- * ScrollView反弹效果的实现
+ * ScrollView反弹效果的实现，自定义控件
  */
 public class BounceScrollView extends HorizontalScrollView {
 	// 孩子View

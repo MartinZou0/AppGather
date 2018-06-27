@@ -3,10 +3,7 @@ package com.appgather.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by qinghua on 2016/12/12.
- */
-
+//MD5加密模块，但是在解加密过程中出现了一些问题，所以没有采用
 public class MD5 {
     public static String digest(byte[] data){
         StringBuffer sb=new StringBuffer();

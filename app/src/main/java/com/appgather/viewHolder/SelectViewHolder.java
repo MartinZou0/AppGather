@@ -7,9 +7,7 @@ import android.widget.TextView;
 
 import com.appgather.R;
 
-/**
- * Created by qinghua on 2017/2/13.
- */
+//已选择的viewholder
 
 public class SelectViewHolder extends CustomItemHolder {
 

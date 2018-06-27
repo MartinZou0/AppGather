@@ -2,9 +2,7 @@ package com.appgather.entity;
 
 import java.io.Serializable;
 
-/**
- * Created by qinghua on 2016/11/29.
- */
+
 
 //注册实体
     //已编程

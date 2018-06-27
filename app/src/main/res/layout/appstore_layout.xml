@@ -9,7 +9,6 @@
         android:id="@+id/wv_appstore"
         >
 
-
     </WebView>
 </LinearLayout>
 

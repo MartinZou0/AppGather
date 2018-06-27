@@ -15,6 +15,7 @@ import android.view.View;
 import com.appgather.R;
 
 
+//用于实现viewpager
 public class RotatImageView extends View {
 	private Paint paint = null; // 画笔
 	private Bitmap mbitmap = null; // 图片位图

@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Created by qinghua on 2017/3/15.
+ *
  * 读取配置文件的工具类
  */
 

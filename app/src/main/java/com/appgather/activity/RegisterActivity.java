@@ -15,6 +15,8 @@ import com.appgather.R;
 import com.appgather.entity.API_Register;
 import com.appgather.view.TextWatcherForJudge;
 
+
+//注册活动，因交互问题，该功能无法正常眼石
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_registername;

@@ -12,9 +12,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-/**
- * Created by acer on 2017/4/2.
- */
+//ZIP解压，并不会用到
 
 public class ZipUtil {
 

@@ -1,9 +1,8 @@
 package com.appgather.entity;
 
-/**
- * Created by qinghua on 2016/11/30.
- */
 
+
+//与服务器交互之后所返回的结果
 public class API_Result {
    private  String ret;
     private String mes;

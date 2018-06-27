@@ -24,11 +24,9 @@ import com.appgather.entity.Classify;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by qinghua on 2017/2/14.
- */
-//应用的现实列表
 
+//应用管理的显示列表
+//可以对已存在用户进行显示和管理
 public class AppManageAdapter extends BaseAdapter {
     private int position;
     private List<Apps> appList;

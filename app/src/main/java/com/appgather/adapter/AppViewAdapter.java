@@ -16,8 +16,7 @@ import com.appgather.R;
 import com.appgather.entity.Apps;
 
 /**
- * Created by qinghua on 2016/11/23.
- * 显示功能块的适配器
+ 显示功能块的适配器，用于APPV的加载和显示
  */
 
 

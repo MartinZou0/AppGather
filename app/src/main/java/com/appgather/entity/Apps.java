@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 //已完成
+//应用实体，用来描述应用的信息
 public class Apps implements Serializable{
     private int CategoryID;//分类ID
     private String  AppName;//应用名

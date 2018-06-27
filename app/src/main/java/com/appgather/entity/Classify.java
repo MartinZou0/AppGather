@@ -3,11 +3,12 @@ package com.appgather.entity;
 import java.util.List;
 
 /**
- * Created by qinghua on 2017/3/20.
+
  * 应用分类标签实体
  */
 
 //已完成
+    //应用实体
 public class Classify {
 
     private String className;

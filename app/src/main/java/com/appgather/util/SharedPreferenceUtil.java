@@ -8,6 +8,7 @@ import com.appgather.application.MyApplication;
 
 
 //已经完成
+//使用Sharedpreference
 public class SharedPreferenceUtil {
 
     private static String FILENAME="appdate";
