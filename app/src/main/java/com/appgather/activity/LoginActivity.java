@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//还有没有完成功能
+//进行定义
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText et_loginname;
@@ -97,9 +97,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void afterTextChanged(Editable editable) {
                 //见识用户名输入框，在两者都有输入的情况下才能点击登录按钮
-                if(editable.toString().length()==11&&et_loginpassword.getText().toString().length()!=0){
+               // if(editable.toString().length()==11&&et_loginpassword.getText().toString().length()!=0){
                     btn_login.setEnabled(true);
-                }
+               // }
 
             }
         };
@@ -107,9 +107,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         textWatcherForPassword=new TextWatcherForJudge(){
             @Override
             public void afterTextChanged(Editable editable) {
-                if(editable.toString().length()!=0&&et_loginpassword.getText().toString().length()!=11){
+                //if(editable.toString().length()!=0&&et_loginpassword.getText().toString().length()!=11){
                     btn_login.setEnabled(true);
-                }
+                //}
             }
         };
 
@@ -125,16 +125,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);break;
             case R.id.btn_login: {
                 //需要输入提示以及判断
-                if(et_loginname.getText().toString().length()==11&&et_loginpassword.getText().toString().length()>=6){
-                    //符合要求才调用方法
-                    Login();
-                }else if(et_loginname.getText().toString().length()!=11){
-                    Toast.makeText(this,"请输入正确的电话号码",Toast.LENGTH_SHORT).show();
-                    et_loginname.setText("");
-                }else if(et_loginpassword.getText().toString().length()<6){
-                    Toast.makeText(this,"请输入正确格式密码",Toast.LENGTH_SHORT).show();
-                    et_loginpassword.setText("");
-                }
+                Login();
+//                if(et_loginname.getText().toString().length()==11&&et_loginpassword.getText().toString().length()>=6){
+//                    //符合要求才调用方法
+//                    Login();
+//                }else if(et_loginname.getText().toString().length()!=11){
+//                    Toast.makeText(this,"请输入正确的电话号码",Toast.LENGTH_SHORT).show();
+//                    et_loginname.setText("");
+//                }else if(et_loginpassword.getText().toString().length()<6){
+//                    Toast.makeText(this,"请输入正确格式密码",Toast.LENGTH_SHORT).show();
+//                    et_loginpassword.setText("");
+//                }
 
                 break;
             }
@@ -149,9 +150,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * 登陆验证
      */
     private void Login() {
-        Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
-        startActivity(intent2);
-        API.Login(et_loginname.getText().toString(), MD5.digest(et_loginpassword.getText().toString().getBytes()), new API.Login_Ret() {
+//        Intent intent2=new Intent(LoginActivity.this,MainInterfaceActivity.class);
+//        startActivity(intent2);
+        Log.d("zsy",MD5.digest(et_loginpassword.getText().toString().getBytes()));
+        API.Login(et_loginname.getText().toString(),et_loginpassword.getText().toString(), new API.Login_Ret() {
             @Override
             public void ret(int Ret, final String Msg) {
                 if(Ret==0)

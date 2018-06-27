@@ -20,10 +20,13 @@ import okhttp3.Response;
  */
 public class API {
     private static final MediaType json=MediaType.parse("application/json; charset=utf-8");
-    private static String url="http://www.appsgather.com/public/index.php/api" ;
+    //private static String url="http://www.appsgather.com/public/index.php/api" ;
+    //http://120.78.160.156/app_store-master/public_html/index.php/api
+    private static String url="http://120.78.160.156/app_store-master/public_html/index.php/api" ;
     public static class SendObject {
         String act;
         Object content;
+        //发送内容应该是用户的账号和密码
         public String getAct() {
             return act;
         }
@@ -35,6 +38,15 @@ public class API {
         void ret(int Ret, String Msg);
     }
 
+    //实际调用的登录验证函数
+
+
+    /**
+     *
+     * @param Send 用户的账号信息实体，作为发送对象
+     * @param ret 实现接口函数
+     * @param activity 活动
+     */
     public static void Login(API_Login Send, final Login_Ret ret, final Activity activity){
         SendObject SO = new SendObject();
         SO.act="Login";
@@ -47,12 +59,16 @@ public class API {
                 .build();
         Call call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback() {
+            //超时或没有网络连接
+            //注意：这里是后台线程！
             @Override
             public void onFailure(Call call, IOException e) {
                 String str="网络异常";
                 ret.ret(0,str);
             }
 
+            //成功
+            //注意：这里是后台线程！
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String a=response.body().string();
@@ -60,7 +76,7 @@ public class API {
                 resultData= JSON.parseObject(a,API_ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {
-                    ret.ret(200,"登陆成功");
+                    ret.ret(200,"登录成功");
                 }
                 else if(resultData.getStatus().equals("0"))
                 {
@@ -86,6 +102,9 @@ public class API {
                 .build();
         Call call = mOkHttpClient.newCall(request);
         call.enqueue(new Callback() {
+
+
+
             @Override
             public void onFailure(Call call, IOException e) {
                 String str="网络异常";
@@ -95,7 +114,7 @@ public class API {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 String str=response.body().string();
-                Log.d("xyz",str);
+                Log.d("zsy",str);
                 API_ResultData resultData= JSONObject.parseObject(str,API_ResultData.class);
                 if(resultData.getStatus().equals("1"))
                 {

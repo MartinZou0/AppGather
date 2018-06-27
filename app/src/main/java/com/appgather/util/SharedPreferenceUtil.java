@@ -6,10 +6,7 @@ import android.util.Log;
 
 import com.appgather.application.MyApplication;
 
-/**
- * Created by qinghua on 2017/3/17.
- * 轻量级存储工具类
- */
+
 //已经完成
 public class SharedPreferenceUtil {
 

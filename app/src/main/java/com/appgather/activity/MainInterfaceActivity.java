@@ -180,6 +180,12 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
         startActivityForResult(intent1,1);
     }
 
+    private void customApps(){
+        Intent intent2=new Intent();
+        intent2.setClass(this,AppManageActivity.class);
+        startActivityForResult(intent2,2);
+    }
+
      /*
     * 如果你想在Activity中得到新打开Activity关闭后返回的数据，
     * 你需要使用系统提供的startActivityForResult(Intent intent,int requestCode)方法打开新的Activity，
@@ -201,6 +207,18 @@ public class MainInterfaceActivity extends AppCompatActivity implements View.OnC
             }
             initDatas();
             initTab();
+        }
+        if(resultCode==2){
+            mDatas.clear();
+            List<Classify>  resultDate= (List<Classify>) data.getSerializableExtra("SelectItem");
+            int index=resultDate.size();
+            for(int i=0;i<index;i++)
+            {
+                mDatas.add(resultDate.get(i).getClassName());
+            }
+            initDatas();
+            initTab();
+
         }
 
     }

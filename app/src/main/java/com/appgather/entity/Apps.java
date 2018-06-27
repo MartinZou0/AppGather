@@ -2,11 +2,6 @@ package com.appgather.entity;
 
 import java.io.Serializable;
 
-/**
- * Created by qinghua on 2017/3/21.
- * 应用信息实体类
- */
-
 
 //已完成
 public class Apps implements Serializable{

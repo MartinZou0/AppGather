@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="争风24"
+            android:text="思源"
             android:textColor="@color/usenamecolor"
             android:textSize="25sp"
             android:layout_gravity="center"
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13075861664"
+            android:text="17720818361"
             android:textColor="@color/textcolor"
             android:textSize="16sp"
             android:layout_gravity="center"
@@ -144,20 +144,20 @@
             android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/shezhi" />
+            <!--<ImageView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:background="@drawable/shezhi" />-->
 
-            <TextView
+            <!--<TextView-->
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
-                android:text="设置"
-                android:textColor="@color/textcolor"
-                android:textSize="16sp" />
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:text="设置"-->
+                <!--android:textColor="@color/textcolor"-->
+                <!--android:textSize="16sp" />-->
 
         </LinearLayout>
 

@@ -152,7 +152,8 @@ public class MyApplication extends Application {
         apps.add(new Apps(1,"快递查询","file:///android_asset/kuaidi/index.html"));
         apps.add(new Apps(2,"测试应用","file:///android_asset/test/index.html"));
        apps.add(new Apps(3,"百度","https://www.baidu.com"));
-        apps.add(new Apps(4,"日历","file:///data/data/com.appgather/calendar/calendar.html"));
+       //尽量完成动态加载
+        //apps.add(new Apps(4,"日历","file:///data/data/com.appgather/calendar/calendar.html"));
         //生成Json字符串格式
         String str=JSON.toJSONString(apps);
         if(SharedPreferenceUtil.CommitData("apps",str)) {

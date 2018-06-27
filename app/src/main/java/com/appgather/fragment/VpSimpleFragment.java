@@ -55,7 +55,10 @@ public class VpSimpleFragment extends Fragment
 		for(int i=0;i<size;i++)
 		{
 			if(mType.equals(MyApplication.getApps().get(i).getCategoryID()+"")){
-				AppURL.add(MyApplication.getApps().get(i));
+				if(MyApplication.getApps().get(i).getIsondisplay()){
+					AppURL.add(MyApplication.getApps().get(i));
+				}
+
 			}
 		}
 	}

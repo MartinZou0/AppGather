@@ -10,7 +10,7 @@
         <com.appgather.widget.CircleImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/elm"
+            android:src="#BFBFBF"
             android:id="@+id/appmanage_logo"
             />
 
@@ -19,13 +19,14 @@
                 android:layout_height="wrap_content"
                 android:text="饿了么"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:textSize="20sp"
                 android:id="@+id/Appmanage_name"
                 android:layout_toRightOf="@id/appmanage_logo"
                 />
 
             <Switch
+                android:clickable="false"
                 android:focusable="false"
                 android:id="@+id/appswitch"
                 android:layout_width="wrap_content"

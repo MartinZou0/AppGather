@@ -4,7 +4,7 @@ package com.appgather.entity;
  * Created by qinghua on 2016/11/29.
  */
 
-//已完成
+//已完成。。
 public class API_Login {
 
     private String Username;//用户名

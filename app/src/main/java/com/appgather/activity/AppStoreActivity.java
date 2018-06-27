@@ -1,5 +1,6 @@
 package com.appgather.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,8 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.appgather.R;
+import com.appgather.application.MyApplication;
+import com.appgather.entity.Apps;
 import com.appgather.util.DlgLoading;
 import com.appgather.util.UnZIp;
 
@@ -28,6 +31,14 @@ import java.net.URL;
 
 public class AppStoreActivity extends AppCompatActivity {
 
+    //用于关闭的静态活动实例
+    public static AppStoreActivity appStoreinstance;
+
+
+    //用来记录下载的文件路径及文件名
+    private String appPathUrl;
+    private String appname;
+
     private WebView wv_appstore;
     private static String appStore_url="http://120.78.160.156/app_store-master/public_html/index/index/index.html";
     private String PATH = null;
@@ -39,6 +50,15 @@ public class AppStoreActivity extends AppCompatActivity {
                 Toast.makeText(AppStoreActivity.this,"下载完成，前往设置",Toast.LENGTH_SHORT).show();
                 //wv_appstore.loadUrl("file:///data/data/com.appgather/calendar/calendar.html");
                 mloadingDialog.dismiss();
+
+                //追加新的应用
+                MyApplication.getApps().add(new Apps(1,appname,appPathUrl));
+                //保存应用数据
+                MyApplication.saveAppsdata_result();
+               Intent intent=new Intent(AppStoreActivity.this,AppManageActivity.class);
+               //intent.putExtra("app",new Apps(1,appname,appPathUrl));
+               startActivity(intent);
+
             }
         }
     };
@@ -48,6 +68,9 @@ public class AppStoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.appstore_layout);
         PATH = "/data/data/"+getPackageName()+"/";
+
+        //初始化实例，便于销毁
+        appStoreinstance=this;
         wv_appstore= (WebView) findViewById(R.id.wv_appstore);
         mloadingDialog=new DlgLoading(this);
         setWebView();
@@ -82,8 +105,7 @@ public class AppStoreActivity extends AppCompatActivity {
                 Toast.makeText(AppStoreActivity.this,"正在下载",Toast.LENGTH_SHORT).show();
                 //开启下载线程
                 new Thread(new DownLoadThread(url, PATH)).start();
-//                Intent intent=new Intent(AppStoreActivity.this,AppManageActivity.class);
-//                startActivity(intent);
+
                 mloadingDialog.show();
             }
         });
@@ -110,7 +132,12 @@ public class AppStoreActivity extends AppCompatActivity {
             String fileName = getConnection(dlUrl, PATH);
             UnZIp.unZip(PATH, PATH+fileName);
             File file = new File(PATH+fileName);
+            //删除压缩包
             file.delete();
+            appname=fileName.substring(0,fileName.length()-4);
+            //获取路径，想办法加入到文件当中去
+            appPathUrl="file://"+PATH+appname+"/"+appname+".html";
+            Log.d("zsyurl",appPathUrl);
             Message msg = new Message();
             msg.what = 1;
             myHandler.sendMessage(msg);
@@ -124,7 +151,6 @@ public class AppStoreActivity extends AppCompatActivity {
         public String getConnection(String urlPath, String downLoadPath){
             String fileName = null;
             try {
-//            String urlPath = "https://www.baidu.com/";
                 URL url = new URL(urlPath);
                 //得到connection对象。
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -147,10 +173,11 @@ public class AppStoreActivity extends AppCompatActivity {
                         Log.d("file", " exists");
 
                     fileName = connection.getHeaderField("Content-Disposition");
+                    Log.d("url",fileName);
                     String[] dirs = fileName.split("/");
                     File file = new File(dir, dirs[2]);
                     FileOutputStream fos = new FileOutputStream(file);
-                    byte[] buf = new byte[1024*8];
+                    byte[] buf = new byte[1024*20];
                     //将内容读到byte数组中，同时返回读入的个数
                     //write方法将一个指定范围的Byte数组写入数据流
                     int len = -1;
